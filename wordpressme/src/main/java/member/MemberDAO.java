@@ -1,12 +1,17 @@
 package member;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import com.mysql.cj.jdbc.JdbcConnection;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 public class MemberDAO {
 	private JdbcTemplate jdbcTemplate;
@@ -22,14 +27,38 @@ public class MemberDAO {
 				
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
 	public void insert(Memberinfo member) {
-		
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				// TODO Auto-generated method stub
+				PreparedStatement pstt = con.prepareStatement("insert into member(EMAIL, PASSWORD, NAME, REGDATE)" + 
+				"values(?,?,?,?)", new String[] {"ID"} );
+				pstt.setString(1, member.getEmail());
+				pstt.setString(2, member.getPassword());
+				pstt.setString(3, member.getName());
+				pstt.setTimestamp(4, Timestamp.valueOf(member.getRegisterDataTime()));
+				return pstt;
+			}
+		},keyHolder);
+		Number keyValue = keyHolder.getKey();
+		member.setId(keyValue.longValue() );
+	
 	}  
 	public void update(Memberinfo member) {
 		
+		
 	}
 	public Collection<Memberinfo> selectAll() {
-	return null;
+		List<Memberinfo> results = jdbcTemplate.query("select * from member", new MemberinfoRowMapper() );
+	return results;
+	}
+	
+	public int count() {
+		Integer count = jdbcTemplate.queryForObject("select count(*) from member",Integer.class);
+		return count;
 	}
 	
 	

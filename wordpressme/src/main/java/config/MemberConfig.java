@@ -4,6 +4,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import member.MemberDAO;
+
 @Configuration
 public class MemberConfig {
 
@@ -21,5 +23,12 @@ public class MemberConfig {
 		ds.setTimeBetweenEvictionRunsMillis(10 * 1000);
 		return ds;
 	}
+	
+	@Bean
+	public MemberDAO memberDAO() {
+		return new MemberDAO(dataSource());
+	}
+	
+	
 	
 }
