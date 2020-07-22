@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -8,13 +9,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 뷰포트 -->
+
 <meta name="viewport" content="width=device-width" initial-scale="1">
 
 <!-- 스타일시트 참조  -->
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
-<title>jsp 게시판 웹사이트</title>
+
+<title>게시판 웹사이트</title>
 
 </head>
 
@@ -57,7 +60,7 @@
       data-toggle="dropdown" role="button" aria-haspopup="true"
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu">
-      <li class="active"><a href="login.jsp">로그인</a></li> <!--  선택된 페이지를 의미함. -->
+      <li class="active"><a href="/wordpressme/member/login">로그인</a></li> <!--  선택된 페이지를 의미함. -->
       <li><a href="join.jsp">회원가입</a></li>
 
       
@@ -92,17 +95,9 @@
 
        
     <div class="form-group">
-
      <input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
-
     </div>
-
     <input type="submit" class="btn btn-primary form-control" value="로그인">
-
-    
-
-    
-
    </form>
 
   </div>
@@ -119,7 +114,7 @@
 
  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
  <!-- 부트스트랩 JS  -->
- <script src="js/bootstrap.js"></script>
+ <script src="<c:url value="/resources/js/bootstrap.js" />"> </script>
 
 </body>
 
