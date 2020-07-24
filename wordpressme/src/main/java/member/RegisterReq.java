@@ -1,11 +1,22 @@
 package member;
 
 public class RegisterReq {
+
 	private String email;
+
 	private String password;
-	private String conformpassword;
+	
+	private String confirmpassword;
+	
 	private String name;
 	
+	
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -19,12 +30,7 @@ public class RegisterReq {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConformpassword() {
-		return conformpassword;
-	}
-	public void setConformpassword(String conformpassword) {
-		this.conformpassword = conformpassword;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -32,8 +38,8 @@ public class RegisterReq {
 		this.name = name;
 	}
 	
-	public boolean isPasswordEqualToConformPassword() {
-		return password.equals(conformpassword);
+	public boolean isPasswordEqualToConfirmPassword() {
+		return password.equals(confirmpassword);
 	}
 	
 

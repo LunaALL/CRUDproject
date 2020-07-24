@@ -66,7 +66,7 @@
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu">
       <li class="active"><a href="/wordpressme/login">로그인</a></li> <!--  선택된 페이지를 의미함. -->
-      <li><a href="/wordpressme/register/step1">회원가입</a></li>
+      <li><a href="/wordpressme/register/registep1">회원가입</a></li>
 
       
 
@@ -144,7 +144,7 @@
     
     
     <div class="custom-control custom-checkbox" style="text-align: center; ">
-    <form action="step2" method="post">
+    <form action="registep2" method="post">
    		<label class="custom-control-label" for="jb-checkbox">약관을 동의합니다</label>
 		<input type="checkbox" name="agree" class="custom-control-input" style="width:17px;height:17px; margin:8px">
 		
