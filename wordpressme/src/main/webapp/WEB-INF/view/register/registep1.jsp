@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
 
+
 <title>회원가입창</title>
 <style>
 
@@ -28,17 +29,18 @@
 
  <!-- 네비게이션  -->
 
- <nav class="navbar navbar-default">
+ <nav class="navbar navbar-expand-sm" >
   <div class="navbar-header">
+  
    <button type="button" class="navbar-toggle collapsed" 
     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
     aria-expaned="false">
-
      <span class="icon-bar"></span>
-
+     
+     <span class="icon-bar"></span>	
+     
      <span class="icon-bar"></span>
-
-     <span class="icon-bar"></span>
+     
 
     </button>
 
@@ -49,8 +51,8 @@
   <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
 
    <ul class="nav navbar-nav">
-    <li><a href="main.jsp">헬린 메인</a></li>
-    <li><a href="bbs.jsp">헬린 게시판</a></li>
+    <li><a href="main.jsp">헬린이 메인</a></li>
+    <li><a href="bbs.jsp">헬린이 게시판</a></li>
    </ul>
 
     
@@ -63,8 +65,8 @@
       data-toggle="dropdown" role="button" aria-haspopup="true"
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu">
-      <li class="active"><a href="/wordpressme/member/login">로그인</a></li> <!--  선택된 페이지를 의미함. -->
-      <li><a href="join.jsp">회원가입</a></li>
+      <li class="active"><a href="/wordpressme/login">로그인</a></li> <!--  선택된 페이지를 의미함. -->
+      <li><a href="/wordpressme/register/step1">회원가입</a></li>
 
       
 
@@ -95,11 +97,11 @@
     <br>
    
     
-    <h3>1. 개인정보의 처리 목적</h3>
+    <h3 >1. 개인정보의 처리 목적</h3>
     <br>
     <br>
     
-    <p><개발자>(‘없음’이하 ‘개발자’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
+    <p ><개발자>(‘없음’이하 ‘개발자’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
 - 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등</p>
 	<br>
 	<br>

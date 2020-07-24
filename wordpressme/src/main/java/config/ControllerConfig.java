@@ -1,22 +1,33 @@
 package config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import controller.HelloController;
+import controller.LoginController;
 import controller.RegisterController;
+import member.MemberRegiService;
 
 @Configuration
 public class ControllerConfig {
 	
+	@Autowired
+	private MemberRegiService memberRegiService;
+	
+
 	@Bean
-	public HelloController helloController() {
-		return new HelloController();
+	public RegisterController registerController() {
+		RegisterController ct = new RegisterController();
+		ct.setMemberRegiService(memberRegiService);
+		return ct;
 	}
 	
 	@Bean
-	public RegisterController registerController() {
-		return new RegisterController();
+	public LoginController loginController() {
+		LoginController ct = new LoginController();
+		return ct;
 	}
+	
+	
 
 }

@@ -4,9 +4,6 @@ import java.time.LocalDateTime;
 
 public class Memberinfo {
 	private Long id;
-
-	
-
 	private String email;
 	private String password;
 	private String name;

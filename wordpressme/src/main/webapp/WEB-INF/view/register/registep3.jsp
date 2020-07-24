@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
 
-<title>회원가입창2</title>
+<title>회원가입창3</title>
 <style>
 
 </style>
@@ -86,27 +86,10 @@
 
   <!-- 점보트론 -->
    <div class="jumbotron" style="padding-top: 20px;">
-   <form action="step3" method="post">
-   <div class="form-group">
-   <input type="text" class="form-control" placeholder="이메일" name="email" maxlength="20">
-   </div>
    
-   <div class="form-group">
-   <input type="text" class="form-control" placeholder="닉네임" name="name" maxlength="20">
-   </div>
-   <div class="form-group">
-   <input type="password" class="form-control" placeholder="비밀번호" name="password" maxlength="20">
-   </div>
-   <div class="form-group">
-   <input type="password" class="form-control" placeholder="비밀번호확인" name="conformPassword" maxlength="20">
-   </div>
+    회원가입을 진심으로 환영합니다. 메인으로 가시겠습니까? 
+    
    
-  
-
-   
-    <input type="submit" class="btn btn-primary form-control" value="회원가입신청" style="margin : 20px;">	
-   
-   </form>
    </div>
   </div>
 
