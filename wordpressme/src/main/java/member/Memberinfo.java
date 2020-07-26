@@ -57,6 +57,11 @@ public class Memberinfo {
 		this.id = id;
 	}
 	
+	public boolean matchmemberpassword(String newpassword) {
+		return this.password.equals(newpassword);
+		
+	}
+	
 	
 
 }

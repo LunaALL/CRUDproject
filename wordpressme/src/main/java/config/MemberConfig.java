@@ -4,7 +4,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
+import login.AuthService;
 import member.MemberDAO;
 import member.MemberRegiService;
 
@@ -36,6 +36,13 @@ public class MemberConfig {
 	@Bean
 	public MemberRegiService memberRegiService() {
 		return new MemberRegiService(memberDAO());
+	}
+	
+	@Bean
+	public AuthService authService() {
+		AuthService authService = new AuthService();
+		authService.setMemberDAO(memberDAO());
+		return authService;
 	}
 
 	

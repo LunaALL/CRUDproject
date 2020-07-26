@@ -28,6 +28,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
+		registry.addViewController("/main").setViewName("member/main");
 		
 	}
 	

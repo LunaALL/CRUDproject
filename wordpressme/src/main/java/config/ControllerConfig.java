@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.LoginController;
 import controller.RegisterController;
+import login.AuthService;
 import member.MemberRegiService;
 
 @Configuration
@@ -13,6 +14,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private MemberRegiService memberRegiService;
+	
+	@Autowired
+	private AuthService authService;
 	
 
 	@Bean
@@ -25,6 +29,7 @@ public class ControllerConfig {
 	@Bean
 	public LoginController loginController() {
 		LoginController ct = new LoginController();
+		ct.setAuthService(authService);
 		return ct;
 	}
 	

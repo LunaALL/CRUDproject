@@ -84,7 +84,7 @@
   <!-- 점보트론 -->
    <div class="jumbotron" style="padding-top: 20px;">
    <h3 style="text-align:center;"><spring:message code="member.register"/></h3>
-   <form:form action="registep3" modelAttribute="memberRegiService">
+   <form:form action="registep3" modelAttribute="memberRegiService" method="post">
    
    <div class="form-group">
    <input type="text" class="form-control" placeholder="이메일" name="email" maxlength="20">

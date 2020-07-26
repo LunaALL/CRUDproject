@@ -1,14 +1,46 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import login.AuthInfo;
+import login.AuthService;
+import login.LoginCommand;
+import login.WrongPasswordException;
+import validator.LoginCommandValidator;
 
 @Controller
 public class LoginController {
 	
-	@GetMapping("/login")
-	public String login() {
-		return "member/Loginform";
+	private AuthService authService;
+	
+	public void setAuthService(AuthService authService) {
+		this.authService=authService;
 	}
+	
+	@GetMapping("/login")
+	public String login(LoginCommand loginCommand) {
+		return "member/loginform";
+	}
+	
+	@PostMapping("/login")
+	public String submit(@ModelAttribute LoginCommand loginCommand, Errors errors) {
+		new LoginCommandValidator().validate(loginCommand, errors);
+		if(errors.hasErrors()) {
+			return "member/loginform";
+		}
+		try {
+			AuthInfo authinfo= authService.authenticate(loginCommand.getEmail(), 
+					loginCommand.getPassword());
+			return "member/main";
+		}catch(WrongPasswordException e) {
+			return "member/loginform";
+		}
+	}
+	
 
 }
