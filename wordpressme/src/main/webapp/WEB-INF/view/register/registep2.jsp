@@ -46,7 +46,7 @@
   <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
 
    <ul class="nav navbar-nav">
-    <li><a href="main.jsp">헬린이 메인</a></li>
+    <li><a href="/wordpressme/main">헬린이 메인</a></li>
     <li><a href="bbs.jsp">헬린이 게시판</a></li>
    </ul>
 
@@ -60,8 +60,8 @@
       data-toggle="dropdown" role="button" aria-haspopup="true"
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu"><!--드랍다운 메뉴 선택 -->
-      <li class="active"><a href="/wordpressme/member/login">로그인하기</a></li> <!-- 페이지 선택. -->
-      <li><a href="join.jsp">회원가입</a></li>
+      <li class="active"><a href="/wordpressme/login">로그인하기</a></li> <!-- 페이지 선택. -->
+      <li><a href="/wordpressme/register/registep1">회원가입</a></li>
 
       
 

@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +30,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String submit(@ModelAttribute LoginCommand loginCommand, Errors errors) {
+	public String submit(@ModelAttribute LoginCommand loginCommand, Errors errors,HttpSession httpSession) {
 		new LoginCommandValidator().validate(loginCommand, errors);
 		if(errors.hasErrors()) {
 			return "member/loginform";
@@ -36,11 +38,21 @@ public class LoginController {
 		try {
 			AuthInfo authinfo= authService.authenticate(loginCommand.getEmail(), 
 					loginCommand.getPassword());
+			
+			httpSession.setAttribute("authinfo", authinfo);
 			return "member/main";
 		}catch(WrongPasswordException e) {
+			errors.rejectValue("password", "errorpassword");
 			return "member/loginform";
 		}
 	}
+	
+	@GetMapping("/logout")
+	public String logout() {
+		return "member/logout";
+	}
+	
+	
 	
 
 }
