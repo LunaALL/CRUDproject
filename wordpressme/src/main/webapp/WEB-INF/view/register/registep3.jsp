@@ -40,7 +40,7 @@
   <!-- 점보트론 -->
    <div class="jumbotron" style="padding-top: 20px;">
    
-    ${memberRegiService.name}님 회원가입을 진심으로 환영합니다.<br>
+    <p style="text-align: center ">${memberRegiService.name}님 회원가입을 진심으로 환영합니다.</p> <br>
         <a href="/wordpressme/main">메인으로</a>
    
     
@@ -50,19 +50,11 @@
 
  </div>
  
- 
- 
 
  <div class="col-lg-4">
  </div>
  
  
-
-
-
-
- 
-
 
  <!-- 애니매이션 담당 JQUERY -->
 

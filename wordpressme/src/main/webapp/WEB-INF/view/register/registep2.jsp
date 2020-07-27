@@ -25,7 +25,7 @@
 
  <!-- 네비게이션  -->
 
- <nav class="navbar navbar-default">
+ <nav class="navbar navbar-defaults">
   <div class="navbar-header">
    <button type="button" class="navbar-toggle collapsed" 
     data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
@@ -106,8 +106,10 @@
    <input type="password" class="form-control" placeholder="비밀번호확인" name="confirmpassword" maxlength="20">
    <form:errors path="confirmpassword"/>
    </div>
-   
-    <input type="submit" class="btn btn-primary form-control" value="회원가입신청" style="margin : 20px;">	
+   <div class="form-group">
+   <input type="submit" class="btn btn-primary form-control" value="회원가입">
+   </div>
+    	
    
    </form:form>
    </div>

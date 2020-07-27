@@ -15,24 +15,24 @@
 <title></title>
 </head>
 <body>
-<c:if test="${empty authinfo}">
-<p> 환영합니다 . 글 쓰기를 하려면 로그인 해주세요.</p>
-<p>
+ <div class="jumbotron" style="padding-top: 20px;">
+   <h3 style="text-align:center;"><spring:message code="member.welcome"/></h3>
+   
+   	<c:if test="${empty authinfo}">
+	<p> 글 쓰기를 하려면 로그인 해주세요.</p>
+	</c:if>
+	
+	
+	<c:if test="${!empty authinfo }">
+	<p> ${authinfo.name}님. 환영합니다</p>
+	</c:if>
+   
+   
+   
+   
+   
+   </div>
 
-</p>
-
-
-</c:if>
-
-
-<c:if test="${!empty authinfo }">
-<p> ${authinfo.name}님. 환영합니다</p>
-<p>
-
-</p>
-
-
-</c:if>
 
 
 

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.LoginController;
 import controller.RegisterController;
+import controller.WriteBoardController;
 import login.AuthService;
 import member.MemberRegiService;
 
@@ -31,6 +32,11 @@ public class ControllerConfig {
 		LoginController ct = new LoginController();
 		ct.setAuthService(authService);
 		return ct;
+	}
+	
+	@Bean
+	public WriteBoardController writeBoardController() {
+		return new WriteBoardController();
 	}
 	
 	

@@ -29,7 +29,7 @@
 
  <!-- 네비게이션  "navbar navbar-expand-sm"-->
 
- <nav class="navbar bg-danger navbar-dark" >
+ <nav class="navbar navbar-defaults" >
   <div class="navbar-header">
   
    <button type="button" class="navbar-toggle collapsed" 

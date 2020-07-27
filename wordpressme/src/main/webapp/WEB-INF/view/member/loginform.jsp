@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 
 
-<title>게시판 웹사이트</title>
+<title>로그인</title>
 
 </head>
 
@@ -41,15 +41,15 @@
 
     </button>
 
-    <a class="navbar-brand" href="main.jsp">JSP 게시판</a>
+    <a class="navbar-brand" href="main"><spring:message code= "bar1" ></spring:message></a>
 
   </div>
 
   <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
 
    <ul class="nav navbar-nav">
-    <li><a href="main">메인</a></li>
-    <li><a href="bbs.jsp">게시판</a></li>
+    <li><a href="/wordpressme/main">메인</a></li>
+    <li><a href="#">게시판</a></li>
    </ul>
 
     
