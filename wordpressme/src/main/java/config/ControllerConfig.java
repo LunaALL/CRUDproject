@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import controller.ChangePwdController;
 import controller.LoginController;
 import controller.RegisterController;
 import controller.WriteBoardController;
 import login.AuthService;
+import member.ChangePasswordService;
+import member.ChangePwdCommand;
 import member.MemberRegiService;
 
 @Configuration
@@ -18,6 +21,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private AuthService authService;
+	
+	@Autowired
+	private ChangePasswordService changePasswordService;
 	
 
 	@Bean
@@ -37,6 +43,13 @@ public class ControllerConfig {
 	@Bean
 	public WriteBoardController writeBoardController() {
 		return new WriteBoardController();
+	}
+	
+	@Bean
+	public ChangePwdController changePwdController() {
+		ChangePwdController ct= new ChangePwdController();
+		ct.setChangePwdController(changePasswordService);
+		return ct;
 	}
 	
 	

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import login.AuthService;
+import member.ChangePasswordService;
 import member.MemberDAO;
 import member.MemberRegiService;
 
@@ -43,6 +44,13 @@ public class MemberConfig {
 		AuthService authService = new AuthService();
 		authService.setMemberDAO(memberDAO());
 		return authService;
+	}
+	
+	@Bean
+	public ChangePasswordService changePasswordService() {
+		ChangePasswordService ct= new ChangePasswordService();
+		return ct;
+		
 	}
 
 	

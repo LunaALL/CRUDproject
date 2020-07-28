@@ -2,6 +2,8 @@ package member;
 
 import java.time.LocalDateTime;
 
+import login.WrongPasswordException;
+
 public class Memberinfo {
 	private Long id;
 	private String email;
@@ -59,6 +61,14 @@ public class Memberinfo {
 	
 	public boolean matchmemberpassword(String newpassword) {
 		return this.password.equals(newpassword);
+		
+	}
+	
+	public void changepassword(String oldp,String newp) {
+		if(!(this.password.equals(oldp)) ) {
+			throw new WrongPasswordException();
+		}
+		this.password=newp;
 		
 	}
 	

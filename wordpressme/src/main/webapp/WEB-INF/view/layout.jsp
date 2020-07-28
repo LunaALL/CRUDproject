@@ -86,6 +86,7 @@
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu">
       <li> <a href="logout">로그아웃</a></li>
+      <li> <a href="/wordpressme/member/change">비밀번호변경</a></li>
      
 
      </ul>
