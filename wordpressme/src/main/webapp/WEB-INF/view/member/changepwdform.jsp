@@ -25,10 +25,12 @@
    <form:form action="/wordpressme/member/change" modelAttribute="pwdcommand" method="post">
    
    
-   <div class="/member/change">
+   <div class="form-group">
    <input type="password" class="form-control" placeholder="현재비밀번호" name="oldpassword" maxlength="20">
    <form:errors path="oldpassword"/>
    </div>
+   <br>
+   <br>
    
    <div class="form-group">
    <input type="password" class="form-control" placeholder="새로운 비밀번호" name="newpassword" maxlength="20">

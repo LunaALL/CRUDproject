@@ -14,8 +14,7 @@ public class ChangePasswordService {
 			throw new MemberNotFound();
 		}
 		
-		member.changepassword(oldp, newp);
-		
+		member.changepassword(oldp,newp);
 		memberDAO.update(member);
 		
 		

@@ -16,7 +16,7 @@ public class RegisterVaildator implements Validator {
 			"[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	
 	private static final String pwreqestExp="^[A-Za-z[0-9]]{10,20}$"; 
-
+	
 
 
 	private Pattern pattern;

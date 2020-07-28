@@ -18,13 +18,20 @@
  <div class="jumbotron" style="padding-top: 20px;">
    <h3 style="text-align:center;"><spring:message code="member.welcome"/></h3>
    
+   
+   
    	<c:if test="${empty authinfo}">
-	<p> 글 쓰기를 하려면 로그인 해주세요.</p>
+   	
+   	<div class="form-group" style="text-align: center;">   
+   	<p> 글 쓰기를 하려면 로그인 해주세요.</p>
+    </div>
 	</c:if>
 	
 	
 	<c:if test="${!empty authinfo }">
-	<p> ${authinfo.name}님. 환영합니다</p>
+	<div class="form-group" style="text-align: center;">   
+   	<p> <strong>${authinfo.name}</strong> 님. 환영합니다</p>
+    </div>
 	</c:if>
    
    
