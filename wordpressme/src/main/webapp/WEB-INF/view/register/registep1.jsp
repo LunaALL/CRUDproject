@@ -91,8 +91,8 @@
    <div class="jumbotron" style="padding-top: 20px;">
 
    <!-- 로그인 정보를 숨기면서 전송post -->
-    <h2 style="text-align: center;"> 약관동의 </h2>
-    <div class="">   
+    <h2 style="text-align: center;"> <spring:message code="term"/></h2>
+      
     <br>
     <br>
    
@@ -149,13 +149,12 @@
 		<input type="checkbox" name="agree" class="custom-control-input" style="width:17px;height:17px; margin:8px">
 		
 		<input type="submit" class="btn btn-primary form-control" value="페이지 이동" style="margin : 20px;">	
-    </form>
-		
+    </form>	
 	</div>
     
 
   
-   </div>
+   
   </div>
 
  </div>

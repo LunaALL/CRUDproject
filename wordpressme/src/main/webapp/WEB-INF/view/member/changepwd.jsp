@@ -8,14 +8,17 @@
 <head>
 <meta charset="UTF-8">
 	<title><spring:message code="change.pwd"/></title>
+	<jsp:include page="../layout.jsp"/>
 </head>
 <body>
 <div class="container">
  <div class="col-lg-8">
- <div class="jumbotron" style="padding-top: 20px; ">
+ <div class="jumbotron" style="padding-top: 20px; text-align: center; ">
  
- <p style="text-align: center;"><spring:message code="change.complete"/></p>
- 
+ <p ><spring:message code="change.complete"/></p>
+ <p> 다시 로그인해주세요. </p>
+ <%session.invalidate(); %>
+ <a href="/wordpressme/main">메인으로.</a>
  
  </div>
 
