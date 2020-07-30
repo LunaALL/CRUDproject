@@ -4,6 +4,8 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import edit.BoardDAO;
+import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
 import member.MemberDAO;
@@ -32,11 +34,19 @@ public class MemberConfig {
 	public MemberDAO memberDAO() {
 		return new MemberDAO(dataSource());
 	}
+	@Bean
+	public BoardDAO boardDAO() {
+		return new BoardDAO(dataSource());
+	}
 	
 	
 	@Bean
 	public MemberRegiService memberRegiService() {
 		return new MemberRegiService(memberDAO());
+	}
+	@Bean
+	public BoardWriteService BoardWriteService() {
+		return new BoardWriteService(boardDAO());
 	}
 	
 	@Bean
@@ -52,6 +62,8 @@ public class MemberConfig {
 		return ct;
 		
 	}
+	
+	
 
 	
 }

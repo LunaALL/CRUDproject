@@ -8,6 +8,7 @@ import controller.ChangePwdController;
 import controller.LoginController;
 import controller.RegisterController;
 import controller.WriteBoardController;
+import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
 import member.ChangePwdCommand;
@@ -24,6 +25,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private ChangePasswordService changePasswordService;
+	
+	@Autowired
+	private BoardWriteService boardWriteService;
 	
 
 	@Bean
@@ -42,7 +46,9 @@ public class ControllerConfig {
 	
 	@Bean
 	public WriteBoardController writeBoardController() {
-		return new WriteBoardController();
+		WriteBoardController ct = new WriteBoardController();
+		ct.setBoardWriteService(boardWriteService);
+		return ct;
 	}
 	
 	@Bean
@@ -51,6 +57,8 @@ public class ControllerConfig {
 		ct.setChangePwdController(changePasswordService);
 		return ct;
 	}
+	
+	
 	
 	
 
