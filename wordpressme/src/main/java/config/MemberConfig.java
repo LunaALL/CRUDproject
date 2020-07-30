@@ -3,6 +3,9 @@ package config;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import edit.BoardDAO;
 import edit.BoardWriteService;
@@ -13,6 +16,7 @@ import member.MemberRegiService;
 
 
 @Configuration
+@EnableTransactionManagement
 public class MemberConfig {
 
 	@Bean(destroyMethod = "close")
@@ -63,6 +67,13 @@ public class MemberConfig {
 		
 	}
 	
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		DataSourceTransactionManager tm = new DataSourceTransactionManager();
+		tm.setDataSource(dataSource());
+		return tm;
+		
+	}
 	
 
 	
