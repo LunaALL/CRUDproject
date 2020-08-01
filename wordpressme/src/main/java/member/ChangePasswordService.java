@@ -18,10 +18,7 @@ public class ChangePasswordService {
 		
 		member.changepassword(oldp,newp);
 		memberDAO.update(member);
-		
-		
-		
-		
+	
 	}
 	
 
