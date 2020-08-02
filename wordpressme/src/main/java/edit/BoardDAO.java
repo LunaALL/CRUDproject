@@ -20,6 +20,8 @@ public class BoardDAO {
 	
 	private JdbcTemplate jdbcTemplate;
 	
+	private 
+	BoardRowMapper row = new BoardRowMapper();
 	public BoardDAO(DataSource dataSource) {
 		this.jdbcTemplate= new JdbcTemplate(dataSource);
 	}
@@ -47,14 +49,14 @@ public class BoardDAO {
 	
 	public List<Board> selectAll(){
 		List<Board> results = jdbcTemplate.query("select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
-			new BoardRowMapper()	
+			row
 		,10);
 		
 		return results.isEmpty() ? null : results;
    }
 	
 	public int getNext() {
-		int rs = jdbcTemplate.queryForObject(sql, requiredType)y
+		int rs = jdbcTemplate.queryForObject(sql, requiredType)
 	}
 	
 	
