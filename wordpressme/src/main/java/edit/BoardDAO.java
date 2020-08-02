@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -13,6 +14,8 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
+import com.mysql.cj.protocol.Resultset;
 
 import controller.WriteBoardController;
 
@@ -47,17 +50,32 @@ public class BoardDAO {
 		board.setBdID(keyValue.longValue());
 	}
 	
-	public List<Board> selectAll(){
+	public void updateboard(Board board) {
+		
+	}
+	
+	public void deleteBoard(Board board) {
+		
+	}
+	
+	public boolean nextPage() {
+		List<Integer> results = jdbcTemplate.query("select count(*) from member", rowMapper)	
+		
+		
+	}
+	
+	
+	public List<Board> selectpage(int pageNumber){
+		
 		List<Board> results = jdbcTemplate.query("select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
-			row
-		,10);
+			row, );
 		
 		return results.isEmpty() ? null : results;
    }
 	
-	public int getNext() {
-		int rs = jdbcTemplate.queryForObject(sql, requiredType)
-	}
+
+	
+
 	
 	
 }
