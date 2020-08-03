@@ -3,7 +3,7 @@ package edit;
 import java.time.LocalDateTime;
 
 public class Board {
-	private Long bdID;
+	private int bdID;
 	private String bdTitle;
 	private String userID; //name
 	private LocalDateTime bdDate;
@@ -11,17 +11,17 @@ public class Board {
 	private int bdIsdelete;
 	
 	
-	public Board(String bdTitle, String userID, LocalDateTime bdDate, String bdContent) {
-		super();
+	public Board(int bdID, String bdTitle, String userID, LocalDateTime bdDate, String bdContent) {
+		this.bdID = bdID;
 		this.bdTitle = bdTitle;
 		this.userID = userID;
 		this.bdDate = bdDate;
 		this.bdContent = bdContent;
 	}
-	public Long getBdID() {
+	public int getBdID() {
 		return bdID;
 	}
-	public void setBdID(Long bdID) {
+	public void setBdID(int bdID) {
 		this.bdID = bdID;
 	}
 	public String getBdTitle() {

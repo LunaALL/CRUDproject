@@ -23,31 +23,32 @@ public class BoardDAO {
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	private 
-	BoardRowMapper row = new BoardRowMapper();
+	private BoardRowMapper row = new BoardRowMapper();
+	
 	public BoardDAO(DataSource dataSource) {
 		this.jdbcTemplate= new JdbcTemplate(dataSource);
 	}
 	
 	public void insert(Board board) {
-		KeyHolder keyHolder = new GeneratedKeyHolder();
+		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
 				// TODO Auto-generated method stub
-				PreparedStatement pst = con.prepareStatement("INSERT INTO bbs(bdTitle,userId,bdDate,bdContent,bdIsdelete)"+
-				"values(?,?,?,?,?)",new String[] {"bdId"} );
-				pst.setString(1, board.getBdTitle());
-				pst.setString(2, board.getUserID());
-				pst.setTimestamp(3, Timestamp.valueOf(board.getBdDate()));
-				pst.setString(4, board.getBdContent());
-				pst.setInt(5, 1);
+				PreparedStatement pst = con.prepareStatement("INSERT INTO bbs(bdID,bdTitle,userId,bdDate,bdContent,bdIsdelete)"+
+				"values(?,?,?,?,?,?)");
+				pst.setInt(1, getNext());
+				pst.setString(2, board.getBdTitle());
+				pst.setString(3, board.getUserID());
+				pst.setTimestamp(4, Timestamp.valueOf(board.getBdDate()));
+				pst.setString(5, board.getBdContent());
+				pst.setInt(6, 1);
 				return pst;
 			}
-		}, keyHolder);
-		Number keyValue= keyHolder.getKey();
-		board.setBdID(keyValue.longValue());
+		} );
+		
+		
 	}
 	
 	public void updateboard(Board board) {
@@ -58,20 +59,24 @@ public class BoardDAO {
 		
 	}
 	
-	public boolean nextPage() {
-		List<Integer> results = jdbcTemplate.query("select count(*) from member", rowMapper)	
-		
-		
-	}
 	
-	
-	public List<Board> selectpage(int pageNumber){
+	public List<Board> getpage(int pageNumber){
 		
-		List<Board> results = jdbcTemplate.query("select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
-			row, );
+		List<Board> results = jdbcTemplate.query(
+				"select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
+			    row,  getNext() - (pageNumber - 1) * 10 );
 		
-		return results.isEmpty() ? null : results;
+		return results;
    }
+	
+
+	public int getNext() {
+		String SQL = "select bdID from bbs order by bdID desc limit 1";
+		int lastId = jdbcTemplate.queryForObject(
+				"select * from bbs order by bdID desc limit 1",
+				Integer.class);
+		return lastId+1;
+	}
 	
 
 	
