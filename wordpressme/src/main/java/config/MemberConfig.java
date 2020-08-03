@@ -23,7 +23,7 @@ public class MemberConfig {
 	public DataSource dataSource() {
 		DataSource ds = new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/webproject?serverTimezone=UTC&characterEncoding=utf8");
+		ds.setUrl("jdbc:mysql://localhost:3306/webproject?serverTimezone=Asia/Seoul&characterEncoding=utf8");
 		ds.setUsername("webtask");
 		ds.setPassword("blackcow84012");
 		ds.setInitialSize(15);

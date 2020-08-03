@@ -6,12 +6,13 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.ChangePwdController;
 import controller.LoginController;
+import controller.MainBoardController;
 import controller.RegisterController;
 import controller.WriteBoardController;
+import edit.BoardDAO;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
-import member.ChangePwdCommand;
 import member.MemberRegiService;
 
 @Configuration
@@ -28,6 +29,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private BoardWriteService boardWriteService;
+	
+	@Autowired
+	private BoardDAO boardDAO;
 	
 
 	@Bean
@@ -56,6 +60,13 @@ public class ControllerConfig {
 		ChangePwdController ct= new ChangePwdController();
 		ct.setChangePwdController(changePasswordService);
 		return ct;
+	}
+	
+	@Bean
+	public MainBoardController mainBoardController() {
+		MainBoardController main = new MainBoardController();
+		main.setBoardDAO(boardDAO);
+		return main;
 	}
 	
 	

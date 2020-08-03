@@ -30,7 +30,6 @@ public class BoardDAO {
 	}
 	
 	public void insert(Board board) {
-		
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
