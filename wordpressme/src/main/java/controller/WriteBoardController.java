@@ -40,8 +40,7 @@ public class WriteBoardController {
 		boardWriteService.commit(board);
 	}
 	
-		return "edit/noticeboardaction";
-		
+		return "edit/noticeboardmain";
 	}
 	
 

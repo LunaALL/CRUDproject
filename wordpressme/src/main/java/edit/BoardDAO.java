@@ -60,20 +60,30 @@ public class BoardDAO {
 	}
 	
 	
-	public List<Board> getpage(int pageNumber){
-		
+	public List<Board> getpage(int pageNum){
 		List<Board> results = jdbcTemplate.query(
 				"select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
-			    row,  getNext() - (pageNumber - 1) * 10 );
-		
+			    row,  getNext() - (pageNum - 1) * 10 );
 		return results;
    }
 	
+	public boolean nextPage(int pageNum) {
+		List<Board> results = jdbcTemplate.query(
+				"select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
+			    row,  getNext() - (pageNum - 1) * 10 );
+		Iterator<Board> it = results.iterator();
+		if(it.hasNext()) {
+			return true;
+		}
+		return false;
+		
+		
+	}
+	
 
 	public int getNext() {
-		String SQL = "select bdID from bbs order by bdID desc limit 1";
 		int lastId = jdbcTemplate.queryForObject(
-				"select * from bbs order by bdID desc limit 1",
+				"select bdID from bbs order by bdID desc limit 1",
 				Integer.class);
 		return lastId+1;
 	}

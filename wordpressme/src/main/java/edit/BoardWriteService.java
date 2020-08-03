@@ -13,7 +13,7 @@ public class BoardWriteService {
 	public long commit(BoardWriteCommand bwc) {
 		Board board= new Board(bwc.getBdTitle(),bwc.getUserID(),
 				LocalDateTime.now(),bwc.getBdContent());
-		
+
 		boardDAO.insert(board);
 		
 		return board.getBdID();

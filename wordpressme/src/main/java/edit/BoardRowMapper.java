@@ -11,13 +11,11 @@ public class BoardRowMapper implements RowMapper<Board> {
 	public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
 		Board board= new Board(
-				rs.getInt("bdID"),
 				rs.getString("bdTitle"), 
 				rs.getString("userID"),
 				rs.getTimestamp("bdDate").toLocalDateTime() , 
 				rs.getString("bdContent") );
-		
-		
+		board.setBdID(rs.getInt("bdID"));
 		return board;
 	}
 }

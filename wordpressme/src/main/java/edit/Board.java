@@ -11,8 +11,7 @@ public class Board {
 	private int bdIsdelete;
 	
 	
-	public Board(int bdID, String bdTitle, String userID, LocalDateTime bdDate, String bdContent) {
-		this.bdID = bdID;
+	public Board( String bdTitle, String userID, LocalDateTime bdDate, String bdContent) {
 		this.bdTitle = bdTitle;
 		this.userID = userID;
 		this.bdDate = bdDate;
