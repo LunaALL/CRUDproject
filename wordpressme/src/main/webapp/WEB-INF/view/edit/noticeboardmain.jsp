@@ -30,13 +30,15 @@
 				<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.bdID}</td>
-					<td>${board.bdTitle}</td>
+					<td><a href="editview?bdID=${board.bdID-1}">${board.bdTitle} </a></td>
 					<td>${board.userID}</td>
 					<td><tf:time value="${board.bdDate}" pattern="yyyy년 MM월 dd일  HH:mm"/></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 			</table>
+			
+			<a href="/wordpressme/write" class="btn btn_primary pull-right">글쓰기</a>
 			
 				
 

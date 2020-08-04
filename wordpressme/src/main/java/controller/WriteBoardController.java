@@ -24,7 +24,7 @@ public class WriteBoardController {
 
 	@GetMapping()
 	public String writeboard(HttpSession session) {
-	AuthInfo info	=(AuthInfo)session.getAttribute("authinfo");
+	AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
 	if(info==null) {
 		return "member/loginform";
 	}
@@ -34,13 +34,12 @@ public class WriteBoardController {
 	@PostMapping()
 	public String postwriteboard(@ModelAttribute("writecommand") BoardWriteCommand board
 		,HttpSession session) {
-	AuthInfo info	=(AuthInfo)session.getAttribute("authinfo");
+	AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
 	if(info!=null) {
 		board.setUserID(info.getName());
 		boardWriteService.commit(board);
 	}
-	
-		return "edit/noticeboardmain";
+		return "redirect:/edit/main";
 	}
 	
 

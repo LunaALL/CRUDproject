@@ -87,6 +87,12 @@ public class BoardDAO {
 		return lastId+1;
 	}
 	
+	public Board getselectpage(int bdID) {
+		
+		List<Board> bd = jdbcTemplate.query("select * from bbs where bdID=?", row, bdID);
+		return bd.get(0);
+	}
+	
 
 	
 

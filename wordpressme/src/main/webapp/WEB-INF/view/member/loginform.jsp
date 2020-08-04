@@ -48,8 +48,8 @@
   <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
 
    <ul class="nav navbar-nav">
-    <li><a href="/wordpressme/main">메인</a></li>
-    <li><a href="#">게시판</a></li>
+    <li><a href="/wordpressme/main">헬린이 메인</a></li>
+    <li><a href="/wordpressme/edit/main">헬린이 게시판</a></li>
    </ul>
 
     
@@ -62,8 +62,8 @@
       data-toggle="dropdown" role="button" aria-haspopup="true"
       aria-expanded="false">접속하기<span class="caret"></span></a>
      <ul class="dropdown-menu">
-      <li class="active"><a href="/wordpressme/member/login">로그인</a></li> <!--  선택된 페이지를 의미함. -->
-      <li><a href="join.jsp">회원가입</a></li>
+      <li class="active"><a href="/wordpressme/member/loginform">로그인</a></li> <!--  선택된 페이지를 의미함. -->
+      <li><a href="/wordpressme/register/registep1">회원가입</a></li>
 
       
 
@@ -91,7 +91,7 @@
 
    
     <h3 style="text-align: center;"> 로그인화면 </h3>
-    <form:form action="login" modelAttribute="loginCommand" method="post">
+    <form:form action="/wordpressme/login" modelAttribute="loginCommand" method="post">
     <div class="form-group">
      <input type="text" class="form-control" placeholder="이메일" name="email" maxlength="20">
      <form:errors path="email"></form:errors>
