@@ -21,7 +21,7 @@ public class MainBoardController {
 	}
 
 
-	@GetMapping
+	@GetMapping("/edit/main")
 	public String mainBoard(
 			@RequestParam(value="pagenum", required =false, defaultValue = "1") int pagenum,
 			Model model) {

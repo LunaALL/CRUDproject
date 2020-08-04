@@ -54,7 +54,7 @@
 
    <ul class="nav navbar-nav">
     <li><a href="/wordpressme/main">헬린이 메인</a></li>
-    <li><a href="/wordpressme/write">헬린이 게시판</a></li>
+    <li><a href="/wordpressme/edit/main">헬린이 게시판</a></li>
    </ul>
 
     
