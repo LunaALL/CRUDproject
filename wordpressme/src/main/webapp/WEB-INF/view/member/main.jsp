@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 
-<title></title>
+<title>메인페이지</title>
 </head>
 <body>
  <div class="jumbotron" style="padding-top: 20px;">

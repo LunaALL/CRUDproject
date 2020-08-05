@@ -4,6 +4,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+   
+   
     
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,9 @@
 		<title><spring:message code="change.pwd"/></title>
 		<jsp:include page="../layout.jsp"/>
 	</head>
+
+
+
 
 <body>
 <div class="container">

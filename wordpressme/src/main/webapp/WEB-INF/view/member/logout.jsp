@@ -10,8 +10,22 @@
 
 </head>
 <body>
-로그아웃 완료!
-<%session.invalidate(); %>
+
+ <div class="container">
+ 	<div class="col-lg-4"></div>
+  		<div class="col-lg-4">
+
+  <!-- 점보트론 -->
+   <div class="jumbotron" style="padding-top: 20px;">
+ <%session.invalidate(); %>
+    <p style="text-align: center ">로그아웃 완료~~~~~ </p> <br>
+        <a href="/wordpressme/main">메인으로</a>
+   
+    
+   
+   </div>
+  </div>
+ </div>
 
 </body>
 </html>
