@@ -15,7 +15,6 @@ public class BoardWriteService {
 				LocalDateTime.now(),bwc.getBdContent());
 
 		boardDAO.insert(board);
-		
 		return board.getBdID();
 	}
 

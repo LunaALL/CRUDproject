@@ -11,8 +11,6 @@
 <jsp:include page="../layout.jsp"/>
 
 
-
-
 <title>회원가입창3</title>
 <style>
 </style>
@@ -20,11 +18,7 @@
 
 	<body>
 
- <!-- 네비게이션  -->
-
  
-
- <!-- 로긴폼 -->
 
  <div class="container">
  	<div class="col-lg-4"></div>
@@ -33,7 +27,7 @@
 
   <!-- 점보트론 -->
    <div class="jumbotron" style="padding-top: 20px;">
-   
+ 
     <p style="text-align: center ">${memberRegiService.name}님 회원가입을 진심으로 환영합니다.</p> <br>
         <a href="/wordpressme/main">메인으로</a>
    
@@ -41,7 +35,6 @@
    
    </div>
   </div>
-
  </div>
  
 

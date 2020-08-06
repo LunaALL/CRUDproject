@@ -3,6 +3,7 @@ package controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edit.BoardWriteCommand;
 import edit.BoardWriteService;
 import login.AuthInfo;
+import validator.WriteBoardValidator;
 
 @Controller
 @RequestMapping("/write")
@@ -33,8 +35,9 @@ public class WriteBoardController {
 	
 	@PostMapping()
 	public String postwriteboard(@ModelAttribute("writecommand") BoardWriteCommand board
-		,HttpSession session) {
+		,HttpSession session, Errors errors) {
 	AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
+	new WriteBoardValidator().validate(board, errors);
 	if(info!=null) {
 		board.setUserID(info.getName());
 		boardWriteService.commit(board);
