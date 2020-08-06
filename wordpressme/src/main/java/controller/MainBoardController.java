@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edit.Board;
 import edit.BoardDAO;
 import login.AuthInfo;
+import validator.WriteBoardValidator;
 
 @Controller
 public class MainBoardController {
@@ -45,8 +46,17 @@ public class MainBoardController {
 		if(info==null) {
 			return "member/loginform";
 		}
-		Board bd= boardDAO.getselectpage(page);
-		model.addAttribute("board",bd);
+		Board board= boardDAO.getselectpage(page);
+		if(board!=null) {
+			board.setBdContent(board.getBdContent().replaceAll(" ","&nbsp;" ).replaceAll("<", "&lt;")
+					.replaceAll(">", "&gt;").replaceAll("\r\n", "<br>") );
+			
+			board.setBdTitle(
+					board.getBdTitle().replaceAll(" ", "&nbsp;").
+					replaceAll("\r\n", "<br>").replaceAll("(?i)<script", "&lt;script")
+					);
+		}
+		model.addAttribute("board",board);
 		
 		return "edit/BoardView";
 		

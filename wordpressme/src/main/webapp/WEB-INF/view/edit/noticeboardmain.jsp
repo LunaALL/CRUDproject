@@ -30,7 +30,7 @@
 				<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.bdID}</td>
-					<td><a href="editview?bdID=${board.bdID-1}">${board.bdTitle} </a></td>
+					<td><a href="editview?bdID=${board.bdID}">${board.bdTitle} </a></td>
 					<td>${board.userID}</td>
 					<td><tf:time value="${board.bdDate}" pattern="yyyy년 MM월 dd일  HH:mm"/></td>
 				</tr>
