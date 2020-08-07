@@ -17,7 +17,6 @@ import edit.BoardDAO;
 import edit.BoardDelupdateCommand;
 import edit.BoardDelupdateService;
 import login.AuthInfo;
-import validator.WriteBoardValidator;
 
 @Controller
 public class MainBoardController {
@@ -75,14 +74,17 @@ public class MainBoardController {
 	
 	
 	@GetMapping("/edit/update")
-	public String GetUpdate(@RequestParam(value="bdID", required = false, defaultValue = "1") int page,Model model, 
+	public String GetUpdate(@RequestParam(value="bdID", required = false) int page,Model model, 
 			HttpSession session) {
 		
 		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
-		if(info==null) {
-			return "member/loginform";
-		}
+		System.out.println(info.getName());
+		
+		
 		Board board= boardDAO.getselectpage(page);
+		if(!info.getName().equals( board.getUserID() ) ) {
+			return "edit/errorpage";
+		}
 		model.addAttribute("board", board);
 		return "edit/update";
 		
@@ -90,14 +92,16 @@ public class MainBoardController {
 
 	
 	@PostMapping("/edit/updateboard")
-	public String PostUpdate(@ModelAttribute("updateboard") BoardDelupdateCommand bcmd, Errors error) {
+	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand bcmd, 
+			@RequestParam(value="bdID", required = false) int bdID
+			,HttpSession session) {
+		bcmd.setBdID(bdID);
 		boardDelupdateService.UpdateCommit(bcmd);	
-		
-		
-		return "edit/noticeboardmain";
+		return "main";
 		
 		
 	}
+	
 	
 	
 	

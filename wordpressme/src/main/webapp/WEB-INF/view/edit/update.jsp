@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 			<div class="row">
-			<form:form action="write/update" method="post" modelAttribute="updatecommand">
+			<form:form action="updateboard?bdID=${board.bdID} " method="post" modelAttribute="updatecommand">
 				<table class="table table-striped" style="text-align: center; border:1px solid #dddddd">
 					<thead>
 						<tr>
@@ -27,7 +27,7 @@
 							${board.bdContent}</textarea></td>
 						</tr>
 					</tbody>
-					<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+					<input type="submit" class="btn btn-primary pull-right" value="글수정">
 				</table>
 				</form:form>
 
