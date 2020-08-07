@@ -47,6 +47,8 @@
 					
 				</table>
 				
+				<a href="update?bdID=${board.bdID}" class="btn btn-primary">수정</a>
+				<a href="delete?bdID=${board.bdID}" class="btn btn-primary">삭제</a>
 
 			</div>		
 		</div>	
