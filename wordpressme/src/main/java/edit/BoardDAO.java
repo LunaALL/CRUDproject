@@ -50,7 +50,12 @@ public class BoardDAO {
 		
 	}
 	
-	public void updateboard(Board board) {
+	public void updateboard(BoardDelupdateCommand board) {
+		jdbcTemplate.update(
+		"update bbs set bdTitle=?, bdContent=? where bdID=?",
+		board.getBdTitle(),board.getBdContent(),board.getBdID()
+		);
+		
 		
 	}
 	
@@ -88,7 +93,6 @@ public class BoardDAO {
 	}
 	
 	public Board getselectpage(int bdID) {
-		
 		List<Board> bd = jdbcTemplate.query("select * from bbs where bdID=?", row, bdID);
 		return bd.get(0);
 	}

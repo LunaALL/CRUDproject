@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import edit.BoardWriteCommand;
 import edit.BoardWriteService;
 import login.AuthInfo;
@@ -20,9 +21,12 @@ public class WriteBoardController {
 	
 	private BoardWriteService boardWriteService;
 	
+	
 	public void setBoardWriteService(BoardWriteService boardWriteService) {
 		this.boardWriteService = boardWriteService;
 	}
+	
+	
 
 	@GetMapping()
 	public String writeboard(HttpSession session) {
@@ -44,6 +48,8 @@ public class WriteBoardController {
 	}
 		return "redirect:/edit/main";
 	}
+	
+	
 	
 
 }

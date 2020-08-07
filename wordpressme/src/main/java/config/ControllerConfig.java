@@ -10,6 +10,7 @@ import controller.MainBoardController;
 import controller.RegisterController;
 import controller.WriteBoardController;
 import edit.BoardDAO;
+import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
@@ -29,6 +30,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private BoardWriteService boardWriteService;
+	
+	@Autowired
+	private BoardDelupdateService boardDelupdateService;
 	
 	@Autowired
 	private BoardDAO boardDAO;
@@ -65,6 +69,7 @@ public class ControllerConfig {
 	@Bean
 	public MainBoardController mainBoardController() {
 		MainBoardController main = new MainBoardController();
+		main.setBoardDelupdateService(boardDelupdateService);
 		main.setBoardDAO(boardDAO);
 		return main;
 	}

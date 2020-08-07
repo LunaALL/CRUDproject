@@ -8,6 +8,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import edit.BoardDAO;
+import edit.BoardDelupdateCommand;
+import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
@@ -51,6 +53,10 @@ public class MemberConfig {
 	@Bean
 	public BoardWriteService BoardWriteService() {
 		return new BoardWriteService(boardDAO());
+	}
+	@Bean
+	public BoardDelupdateService BoardDelupdateService() {
+		return new BoardDelupdateService(boardDAO());
 	}
 	
 	@Bean

@@ -6,11 +6,16 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edit.Board;
 import edit.BoardDAO;
+import edit.BoardDelupdateCommand;
+import edit.BoardDelupdateService;
 import login.AuthInfo;
 import validator.WriteBoardValidator;
 
@@ -19,9 +24,15 @@ public class MainBoardController {
 	
 	private BoardDAO boardDAO;
 	
+	private BoardDelupdateService boardDelupdateService;
+	
 	
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
+	}
+	
+	public void setBoardDelupdateService(BoardDelupdateService boardDelupdateService) {
+		this.boardDelupdateService = boardDelupdateService;
 	}
 
 
@@ -61,5 +72,33 @@ public class MainBoardController {
 		return "edit/BoardView";
 		
 	}
+	
+	
+	@GetMapping("/edit/update")
+	public String GetUpdate(@RequestParam(value="bdID", required = false, defaultValue = "1") int page,Model model, 
+			HttpSession session) {
+		
+		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
+		if(info==null) {
+			return "member/loginform";
+		}
+		Board board= boardDAO.getselectpage(page);
+		model.addAttribute("board", board);
+		return "edit/update";
+		
+	}
 
+	
+	@PostMapping("/edit/updateboard")
+	public String PostUpdate(@ModelAttribute("updateboard") BoardDelupdateCommand bcmd, Errors error) {
+		boardDelupdateService.UpdateCommit(bcmd);	
+		
+		
+		return "edit/noticeboardmain";
+		
+		
+	}
+	
+	
+	
 }
