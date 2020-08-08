@@ -4,6 +4,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
     <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
     
     
@@ -27,10 +28,10 @@
 						<th style="background-color:#eeeeee; text-align:center;">작성일</th>
 				</thead>
 			<tbody>
-				<c:forEach var="board" items="${boards}">
+				<c:forEach items="${boards}" var="board">
 				<tr>
 					<td>${board.bdID}</td>
-					<td><a href="editview?bdID=${board.bdID}">${board.bdTitle} </a></td>
+					<td><a href="editview?bdID=${board.bdID}"> ${board.bdTitle } </a></td>
 					<td>${board.userID}</td>
 					<td><tf:time value="${board.bdDate}" pattern="yyyy년 MM월 dd일  HH:mm"/></td>
 				</tr>

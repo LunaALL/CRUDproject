@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,7 @@
 <body>
 <div class="container">
 			<div class="row">
-			<form:form action="updateboard?bdID=${board.bdID} " method="post" modelAttribute="updatecommand">
+			<form:form action="updateboard?bdID=${board.bdID}" method="post" modelAttribute="updatecommand">
 				<table class="table table-striped" style="text-align: center; border:1px solid #dddddd">
 					<thead>
 						<tr>

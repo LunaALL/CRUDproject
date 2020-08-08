@@ -42,12 +42,46 @@ public class WriteBoardController {
 		,HttpSession session, Errors errors) {
 	AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
 	new WriteBoardValidator().validate(board, errors);
-	if(info!=null) {
+	
 		board.setUserID(info.getName());
+		
+		
+		String head=board.getBdTitle();
+		String body=board.getBdContent();
+		head=filterStr(head);
+		body=filterStr(body);
+		/*head.replaceAll(" ","&nbsp;" ).replaceAll("\\<", "&lt;").replaceAll(">", "&gt");
+		body.replaceAll(" ","&nbsp;" ).replaceAll("\\<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>");*/
+		board.setBdTitle(head);
+		board.setBdContent(body);
+		
 		boardWriteService.commit(board);
-	}
+	
 		return "redirect:/edit/main";
 	}
+	
+	public String filterStr(String str){
+	    if(str.indexOf("<script>")!=-1){
+	      str = str.replaceAll("<script>", "");
+	    }
+	    if(str.indexOf("</script>")!=-1){
+	      str = str.replaceAll("</script>", "");
+	    }
+	    if(str.indexOf("<javascript>")!=-1){
+	      str = str.replaceAll("<javascript>", "");
+	    }
+	    if(str.indexOf("</javascript>")!=-1){
+	      str = str.replaceAll("</javascript>", "");
+	    }
+	    if(str.indexOf("<vbscript>")!=-1){
+	      str = str.replaceAll("<vbscript>", "");
+	    }
+	    if(str.indexOf("</vbscript>")!=-1){
+	      str = str.replaceAll("</vbscript>", "");
+	    }
+	    return str;
+	  }
+
 	
 	
 	

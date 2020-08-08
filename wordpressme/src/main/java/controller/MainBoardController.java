@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +42,18 @@ public class MainBoardController {
 		if(info==null) {
 			return "member/loginform";
 		}
+		
 		List<Board> result =boardDAO.getpage(pagenum);
+		for(Board board : result) {
+			String head=board.getBdTitle();
+			String body=board.getBdContent();
+			head=filterStr(head);
+			body=filterStr(body);
+			board.setBdTitle(head);
+			board.setBdContent(body);
+		}
+		
+		
 		model.addAttribute("boards", result);
 		
 		return "edit/noticeboardmain";
@@ -57,15 +67,12 @@ public class MainBoardController {
 			return "member/loginform";
 		}
 		Board board= boardDAO.getselectpage(page);
-		if(board!=null) {
-			board.setBdContent(board.getBdContent().replaceAll(" ","&nbsp;" ).replaceAll("<", "&lt;")
-					.replaceAll(">", "&gt;").replaceAll("\r\n", "<br>") );
-			
-			board.setBdTitle(
-					board.getBdTitle().replaceAll(" ", "&nbsp;").
-					replaceAll("\r\n", "<br>").replaceAll("(?i)<script", "&lt;script")
-					);
-		}
+		String head=board.getBdTitle();
+		String body=board.getBdContent();
+		head=filterStr(head);
+		body=filterStr(body);
+		board.setBdTitle(head);
+		board.setBdContent(body);
 		model.addAttribute("board",board);
 		
 		return "edit/BoardView";
@@ -78,9 +85,10 @@ public class MainBoardController {
 			HttpSession session) {
 		
 		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
+		if(info==null) {
+			return "member/loginform";
+		}
 		System.out.println(info.getName());
-		
-		
 		Board board= boardDAO.getselectpage(page);
 		if(!info.getName().equals( board.getUserID() ) ) {
 			return "edit/errorpage";
@@ -92,15 +100,46 @@ public class MainBoardController {
 
 	
 	@PostMapping("/edit/updateboard")
-	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand bcmd, 
+	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand board, 
 			@RequestParam(value="bdID", required = false) int bdID
 			,HttpSession session) {
-		bcmd.setBdID(bdID);
-		boardDelupdateService.UpdateCommit(bcmd);	
-		return "main";
+		board.setBdID(bdID);
+		String head=board.getBdTitle();
+		String body=board.getBdContent();
+		head=filterStr(head);
+		body=filterStr(body);
+		board.setBdTitle(head);
+		board.setBdContent(body);
+		
+
+		boardDelupdateService.UpdateCommit(board);	
+		return "redirect:/edit/main";
 		
 		
 	}
+	
+	
+	public String filterStr(String str){
+	    if(str.indexOf("<script>")!=-1){
+	      str = str.replaceAll("<script>", "");
+	    }
+	    if(str.indexOf("</script>")!=-1){
+	      str = str.replaceAll("</script>", "");
+	    }
+	    if(str.indexOf("<javascript>")!=-1){
+	      str = str.replaceAll("<javascript>", "");
+	    }
+	    if(str.indexOf("</javascript>")!=-1){
+	      str = str.replaceAll("</javascript>", "");
+	    }
+	    if(str.indexOf("<vbscript>")!=-1){
+	      str = str.replaceAll("<vbscript>", "");
+	    }
+	    if(str.indexOf("</vbscript>")!=-1){
+	      str = str.replaceAll("</vbscript>", "");
+	    }
+	    return str;
+	  }
 	
 	
 	

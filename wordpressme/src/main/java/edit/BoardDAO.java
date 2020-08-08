@@ -60,6 +60,7 @@ public class BoardDAO {
 	}
 	
 	public void deleteBoard(Board board) {
+		jdbcTemplate.update("delete from bbs where bdID=?");
 		
 	}
 	
