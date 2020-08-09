@@ -23,11 +23,8 @@
 
 </style>
 </head>
-
-
 <body>
 
- <!-- 네비게이션  "navbar navbar-expand-sm"-->
 
  <nav class="navbar navbar-default" >
   <div class="navbar-header">
