@@ -8,7 +8,10 @@
 <title>게시글 에러 페이지 </title>
 </head>
 <body>
-본인의 게시글이 아닙니다.. 확인해주세요! 
+<div class="jumbotron" style="padding-top: 20px;">
+   <h3 style="text-align:center;">본인의 게시글이 아닙니다.. 확인해주세요! </h3>
+   </div>
+
 
 </body>
 </html>
