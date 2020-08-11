@@ -111,16 +111,27 @@ public class MainBoardController {
 		body=filterStr(body);
 		board.setBdTitle(head);
 		board.setBdContent(body);
-		
-
+	
 		boardDelupdateService.UpdateCommit(board);	
 		return "redirect:/edit/main";
 		
 		
 	}
-	
-	public String PostDelete(@RequestParam(value="bdID", required = false) int bdID) {
+	@GetMapping("/edit/delete")
+	public String PostDelete(@RequestParam(value="bdID", required = false) int bdID,
+			@RequestParam(value="name",required = false) String name,HttpSession session) {
+		
+		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
+		if(info==null) {
+			return "member/loginform";
+		}
+		if(!info.getName().equals(name)) {
+			return "edit/errorpage";
+		}
+
 		boardDelupdateService.DeleteCommit(bdID);
+		
+		return "redirect:/edit/main";
 		
 	}
 	
