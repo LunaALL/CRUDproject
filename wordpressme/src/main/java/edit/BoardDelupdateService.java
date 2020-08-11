@@ -13,8 +13,8 @@ public class BoardDelupdateService {
 		boardDAO.updateboard(wc);
 	}
 	
-	public void DeleteCommit(BoardDelupdateCommand wc) {
-		
+	public void DeleteCommit(int bdID) {
+		boardDAO.deleteBoard(bdID);
 		
 	}
 	
