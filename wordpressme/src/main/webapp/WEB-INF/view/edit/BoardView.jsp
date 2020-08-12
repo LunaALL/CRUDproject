@@ -46,9 +46,8 @@
 					</tbody>
 					
 				</table>
-				
+				<a href="/wordpressme/edit/main" class="btn btn-primary">목록</a>
 				<a href="update?bdID=${board.bdID}" class="btn btn-primary">수정</a>
-				
 				<a href="delete?bdID=${board.bdID}&name=${board.userID}" class="btn btn-primary">삭제</a>
 
 			</div>		

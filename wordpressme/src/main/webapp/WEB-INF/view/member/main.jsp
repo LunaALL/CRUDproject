@@ -16,29 +16,34 @@
 </head>
 <body>
  <div class="jumbotron" style="padding-top: 20px;">
-   <h3 style="text-align:center;"><spring:message code="member.welcome"/></h3>
-   
-   
-   
-   	<c:if test="${empty authinfo}">
-   	
+  
+   <div class="container">
+   <h2><spring:message code="member.welcome"/></h2>
+   <br>
+   <br>
+   <p> 프론트는 디자인 템플릿인 부트스트랩 + jsp + Jstl 을 이용해 작성하였으며, 
+              서버는 스프링 프레임워크를 이용해 자바로 구성하였습니다. </p>
+
+
+</div>
+
+  	
+   <c:if test="${empty authinfo}">
    	<div class="form-group" style="text-align: center;">   
    	<p> 글 쓰기를 하려면 로그인 해주세요.</p>
     </div>
 	</c:if>
-	
 	
 	<c:if test="${!empty authinfo }">
 	<div class="form-group" style="text-align: center;">   
    	<p> <strong>${authinfo.name}</strong> 님. 환영합니다</p>
     </div>
 	</c:if>
-   
-   
-   
-   
-   
-   </div>
+ 
+ 
+ 
+ 
+ </div>
 
 
 
