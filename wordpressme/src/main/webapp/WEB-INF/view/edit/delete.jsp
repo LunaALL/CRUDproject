@@ -7,6 +7,7 @@
 <title>삭제 페이지</title>
 </head>
 <body>
+삭제 페이지
 
 
 </body>
