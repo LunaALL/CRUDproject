@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,21 @@ public class MainBoardController {
 	
 	public void setBoardDelupdateService(BoardDelupdateService boardDelupdateService) {
 		this.boardDelupdateService = boardDelupdateService;
+	}
+	
+	
+	
+	@RequestMapping(value="/edit/main1")
+	public String BoardList(@ModelAttribute("board")Board board,
+			@RequestParam(defaultValue = "1") int curPage,
+			Model model) throws Exception{
+		int listCnt= boardDAO.se
+		
+		
+		return "edit/main";
+		
+		
+		
 	}
 
 
