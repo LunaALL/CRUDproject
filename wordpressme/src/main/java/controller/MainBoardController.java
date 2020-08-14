@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mysql.cj.Session;
+
 import edit.Board;
 import edit.BoardDAO;
 import edit.BoardDelupdateCommand;
@@ -37,13 +39,34 @@ public class MainBoardController {
 	
 	
 	
+	
 	@RequestMapping(value="/edit/main1")
-	public String BoardList(@ModelAttribute("board")Board board,
-			@RequestParam(defaultValue = "1") int curPage,
-			Model model) throws Exception{
-		int listCnt= boardDAO.se
+	public String BoardList(@ModelAttribute("board")Board board, @RequestParam(defaultValue = "1") int curPage,
+			HttpSession session, Model model) throws Exception{
+					int listCnt= boardDAO.se
+			       
+			        // 전체리스트 개수
+			        int listCnt = 
+			        
+			        Pagination pagination = new Pagination(listCnt, curPage);
+			        
+			        boardVO.setStartIndex(pagination.getStartIndex());
+			        boardVO.setCntPerPage(pagination.getPageSize());
+			        // 전체리스트 출력
+			        List<BoardVO> list = boardServiceImpl.selectBoardList(boardVO);
+			                
+			        model.addAttribute("list", list);
+			        model.addAttribute("listCnt", listCnt);
+			        model.addAttribute("loginVO", loginVO);
+			        
+			        model.addAttribute("pagination", pagination);
+			        
+			        return "board/boardList";
+			    }
 		
-		
+				
+				
+				
 		return "edit/main";
 		
 		

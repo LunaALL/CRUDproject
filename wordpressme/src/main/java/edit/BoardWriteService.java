@@ -17,5 +17,8 @@ public class BoardWriteService {
 		boardDAO.insert(board);
 		return board.getBdID();
 	}
+	
+	
+	
 
 }
