@@ -10,15 +10,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mysql.cj.Session;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+
 
 import edit.Board;
 import edit.BoardDAO;
 import edit.BoardDelupdateCommand;
 import edit.BoardDelupdateService;
+import edit.pageing.Criteria;
+import edit.pageing.PageMaker;
 import login.AuthInfo;
 
 @Controller
@@ -37,9 +40,27 @@ public class MainBoardController {
 		this.boardDelupdateService = boardDelupdateService;
 	}
 	
+	@GetMapping("/board/boardList")
+	public ModelAndView BoardMain(@RequestParam(value="page", required = true, defaultValue = "1") int page) {
+		
+		ModelAndView mav = new ModelAndView("/edit/NewFile");
+		Criteria cri =new Criteria();
+		cri.setPage(page);
+		PageMaker pagemaker = new PageMaker();
+		List<Board> bd=boardDAO.getDivPage(cri);
+		pagemaker.setCri(cri);
+		pagemaker.setTotalCount( boardDAO.getTotalCountpage() );
+		
+		mav.addObject("boards",bd);
+		mav.addObject("pageMaker",pagemaker);
+		
+		return mav;
+		
+	}
 	
 	
-
+	
+  /*
 	@GetMapping("/edit/main")
 	public String mainBoard(
 			@RequestParam(value="pagenum", required =false, defaultValue = "1") int pagenum,
@@ -64,6 +85,7 @@ public class MainBoardController {
 		
 		return "edit/noticeboardmain";
 	}
+	*/
 	
 	
 	@GetMapping("/edit/editview")

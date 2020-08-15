@@ -18,6 +18,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import com.mysql.cj.protocol.Resultset;
 
 import controller.WriteBoardController;
+import edit.pageing.Criteria;
 
 public class BoardDAO {
 	
@@ -63,8 +64,6 @@ public class BoardDAO {
 		jdbcTemplate.update("delete from bbs where bdID=?", bdID);
 		
 	}
-	
-	
 	public List<Board> getpage(int pageNum){
 		List<Board> results = jdbcTemplate.query(
 				"select * from bbs where bdID < ? and bdIsdelete=1 order by bdID desc limit 10",
@@ -84,7 +83,6 @@ public class BoardDAO {
 		
 		
 	}
-	
 
 	public int getNext() {
 		int lastId = jdbcTemplate.queryForObject(
@@ -97,6 +95,26 @@ public class BoardDAO {
 		List<Board> bd = jdbcTemplate.query("select * from bbs where bdID=?", row, bdID);
 		return bd.get(0);
 	}
+	
+	
+	public int getTotalCountpage()
+	{
+		int num = jdbcTemplate.queryForObject("select count(*) from bbs", Integer.class);
+		return num;
+	}
+	
+	
+	public List<Board> getDivPage(Criteria cri){
+		
+		List<Board> bd=jdbcTemplate.query("select * from bbs order by bdID desc limit ? , ?",
+				row, cri.getPageStart(),cri.getPerPageNum());
+		
+		return bd;
+		
+	}
+	
+	
+	
 	
 
 	
