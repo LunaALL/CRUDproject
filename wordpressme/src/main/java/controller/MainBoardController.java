@@ -39,40 +39,6 @@ public class MainBoardController {
 	
 	
 	
-	
-	@RequestMapping(value="/edit/main1")
-	public String BoardList(@ModelAttribute("board")Board board, @RequestParam(defaultValue = "1") int curPage,
-			HttpSession session, Model model) throws Exception{
-					int listCnt= boardDAO.se
-			       
-			        // 전체리스트 개수
-			        int listCnt = 
-			        
-			        Pagination pagination = new Pagination(listCnt, curPage);
-			        
-			        boardVO.setStartIndex(pagination.getStartIndex());
-			        boardVO.setCntPerPage(pagination.getPageSize());
-			        // 전체리스트 출력
-			        List<BoardVO> list = boardServiceImpl.selectBoardList(boardVO);
-			                
-			        model.addAttribute("list", list);
-			        model.addAttribute("listCnt", listCnt);
-			        model.addAttribute("loginVO", loginVO);
-			        
-			        model.addAttribute("pagination", pagination);
-			        
-			        return "board/boardList";
-			    }
-		
-				
-				
-				
-		return "edit/main";
-		
-		
-		
-	}
-
 
 	@GetMapping("/edit/main")
 	public String mainBoard(
