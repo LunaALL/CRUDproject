@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container">
-			<div class="row">
+		<div class="row">
 			<table class="table table-striped" style="text-align:center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
@@ -38,27 +38,31 @@
 			
 				
 
-		</div>		
-	</div>	
+	</div>		
+</div>	
 
-
+<div class="but" style="text-align: center;">
 <ul class="btn-group pagination">
     <c:if test="${pageMaker.prev }">
-    <li>
-        <a href='<c:url value="/board/boardList?page=${pageMaker.startPage-1 }"/>'><i class="fa fa-chevron-left"></i></a>
-    </li>
+   	 <li>
+        <a href='<c:url value="/edit/main?page=${pageMaker.startPage-1 }"/>'><i class="fa fa-chevron-left"></i></a>
+   	 </li>
     </c:if>
     <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
     <li>
-        <a href='<c:url value="/board/boardList?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
-    </li>
+       <a href='<c:url value="/edit/main?page=${pageNum }"/>'><i class="fa">${pageNum }</i></a>
+   	</li>
     </c:forEach>
     <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
     <li>
-        <a href='<c:url value="/board/boardList?page=${pageMaker.endPage+1 }"/>'><i class="fa fa-chevron-right"></i></a>
+       <a href='<c:url value="/edit/main?page=${pageMaker.endPage+1 }"/>'><i class="fa fa-chevron-right"></i></a>
     </li>
     </c:if>
 </ul>
+
+
+</div>
+
 
 
 

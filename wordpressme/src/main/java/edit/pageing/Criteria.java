@@ -6,8 +6,8 @@ public class Criteria {
     private int perPageNum; //한 페이지당 보여줄 게시글 수.
     
     public int getPageStart() {
-    	/*특정 페이지의 게시글 시작 번호, 게시글 시작 행 번호  */
-    	
+    	/*특정 페이지의 게시글 시작 번호  */
+
         return (this.page-1)*perPageNum;
     }
     

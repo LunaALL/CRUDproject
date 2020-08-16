@@ -40,14 +40,25 @@ public class MainBoardController {
 		this.boardDelupdateService = boardDelupdateService;
 	}
 	
-	@GetMapping("/board/boardList")
+	//@GetMapping("/board/boardList")
+	@GetMapping("/edit/main")
 	public ModelAndView BoardMain(@RequestParam(value="page", required = true, defaultValue = "1") int page) {
 		
-		ModelAndView mav = new ModelAndView("/edit/NewFile");
+		ModelAndView mav = new ModelAndView("/edit/boardmain");
 		Criteria cri =new Criteria();
 		cri.setPage(page);
 		PageMaker pagemaker = new PageMaker();
 		List<Board> bd=boardDAO.getDivPage(cri);
+		for(Board board : bd) {
+			String head=board.getBdTitle();
+			String body=board.getBdContent();
+			head=filterStr(head);
+			body=filterStr(body);
+			board.setBdTitle(head);
+			board.setBdContent(body);
+		}
+		
+		
 		pagemaker.setCri(cri);
 		pagemaker.setTotalCount( boardDAO.getTotalCountpage() );
 		

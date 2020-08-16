@@ -30,9 +30,10 @@ public class PageMaker {
         //getpage=현재 페이지 번호 
         endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
         //끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수
-
-        
+        System.out.println("엔드페이지 출력 "+endPage);
         startPage = (endPage - displayPageNum) + 1;
+        
+        
         if(startPage <= 0) startPage = 1;
         //getperpagenum 한 페이지당 보여줄 게시글의 갯수
         int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
