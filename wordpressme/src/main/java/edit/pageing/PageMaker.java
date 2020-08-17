@@ -60,7 +60,7 @@ public class PageMaker {
         this.startPage = startPage;
     }
     public int getEndPage() {
-        return endPage;
+        return endPage; 
     }
     public void setEndPage(int endPage) {
         this.endPage = endPage;
