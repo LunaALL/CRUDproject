@@ -36,6 +36,7 @@ public class PageMaker {
         
         if(startPage <= 0) startPage = 1;
         //getperpagenum 한 페이지당 보여줄 게시글의 갯수
+        
         int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
         //tempendpage는 총 게시글 숫자를 한 페이지당 보여줄 게시글의 갯수(5)를 나눈것. 
        

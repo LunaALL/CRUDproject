@@ -28,6 +28,13 @@ public class MemberDAO {
 		return results.isEmpty() ? null : results.get(0);
 	}
 	
+	public Memberinfo selectByName(String name) {
+		List<Memberinfo> results = jdbcTemplate.query("select * from member where NAME =? ", new MemberinfoRowMapper(), name);
+		
+		return results.isEmpty() ? null : results.get(0);
+		
+	}
+	
 	public void insert(Memberinfo member) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
