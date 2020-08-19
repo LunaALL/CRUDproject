@@ -16,7 +16,7 @@ public class MemberRegiService {
 		}
 		Memberinfo mem =memberDAO.selectByName(req.getName());
 		if(mem!=null) {
-			throw new DuplicateMemberEx("중복된 닉네임입니다. 다른 닉네임을 사용해주세요.");
+			throw new DuplicateMemName("중복된 닉네임입니다.");
 		}
 		
 		

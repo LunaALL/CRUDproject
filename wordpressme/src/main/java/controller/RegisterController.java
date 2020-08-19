@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import member.DuplicateMemName;
 import member.DuplicateMemberEx;
 import member.MemberRegiService;
 import member.RegisterReq;
@@ -70,6 +71,11 @@ public class RegisterController {
 			{
 			errors.rejectValue("email", "duplicate");
 			return "register/registep2";
+			}
+			catch (DuplicateMemName e) 
+			{
+				errors.rejectValue("name", "duplicate.name");
+				return "register/registep2";
 			}
 		
 		
