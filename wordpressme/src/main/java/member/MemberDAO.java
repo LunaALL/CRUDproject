@@ -53,13 +53,14 @@ public class MemberDAO {
 		Number keyValue = keyHolder.getKey();
 		member.setId(keyValue.longValue() );
 	
+		
 	}  
-	public void update(Memberinfo member) {
-		jdbcTemplate.update("update member set NAME = ?, PASSWORD= ? where EMAIL=?", member.getName(), member.getPassword(), member.getEmail() );
-		
-		
+	public void update(Memberinfo member) 
+	{
+		jdbcTemplate.update("update member set NAME = ?, PASSWORD= ? where EMAIL=?", member.getName(), member.getPassword(), member.getEmail() );	
 	}
-	public Collection<Memberinfo> selectAll() {
+	public Collection<Memberinfo> selectAll() 
+	{
 		List<Memberinfo> results = jdbcTemplate.query("select * from member", new MemberinfoRowMapper() );
 	return results;
 	}
