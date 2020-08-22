@@ -13,12 +13,12 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
-public class MemberDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	public MemberDAO(DataSource dataSource) {
 		this.jdbcTemplate= new JdbcTemplate(dataSource);
 	}
+
 	
 	public Memberinfo selectByEmail(String email) {
 		List<Memberinfo> results = jdbcTemplate.query(
