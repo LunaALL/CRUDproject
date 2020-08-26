@@ -18,9 +18,13 @@ public class WriteBoardValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 		BoardWriteCommand cmd = (BoardWriteCommand)target;
-		ValidationUtils.rejectIfEmpty(errors,"bdTitle" , "require");
-		ValidationUtils.rejectIfEmpty(errors,"bdContent" , "require");
+		
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "bdTitle", "required");
+		ValidationUtils.rejectIfEmpty(errors,"bdContent" , "required");
 			//서버사이드 스크립트 공격 방지용 구문
+		
+		
 		
 		
 	}

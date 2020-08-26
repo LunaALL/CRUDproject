@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 등록</title>
+<title>글 등록하기</title>
 <jsp:include page="../layout.jsp"/>
 
 </head>
@@ -24,7 +24,7 @@
 					</thead>
 					<tbody>
 						<tr>	
-							<td><input type="text" class="form-control" placeholder="글 제목" name="bdTitle" maxlength="50"></td>
+							<td><input type="text" class="form-control" placeholder="글 제목" name="bdTitle" maxlength="50"><form:errors path="bdTitle"/></td>
 						</tr>
 						<tr>
 							<td><textarea type="text" class="form-control" placeholder="글 내용" name="bdContent" maxlength="2048" style="height:350px;"></textarea></td>

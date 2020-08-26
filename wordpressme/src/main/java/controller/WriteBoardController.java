@@ -43,6 +43,9 @@ public class WriteBoardController {
 	AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
 	new WriteBoardValidator().validate(board, errors);
 	
+	if(errors.hasErrors()) {
+		return "edit/noticeboard";
+	}
 		board.setUserID(info.getName());
 		
 		
@@ -50,8 +53,7 @@ public class WriteBoardController {
 		String body=board.getBdContent();
 		head=filterStr(head);
 		body=filterStr(body);
-		/*head.replaceAll(" ","&nbsp;" ).replaceAll("\\<", "&lt;").replaceAll(">", "&gt");
-		body.replaceAll(" ","&nbsp;" ).replaceAll("\\<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>");*/
+		
 		board.setBdTitle(head);
 		board.setBdContent(body);
 		

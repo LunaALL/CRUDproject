@@ -24,8 +24,16 @@ public class MemberDAO{
 	
 	public Memberinfo selectByEmail(String email) {
 		List<Memberinfo> results = jdbcTemplate.query(
-				"select * from member where EMAIL = ?",
-				new MemberinfoRowMapper(),email);	
+				new PreparedStatementCreator() {
+					
+					@Override
+					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+						// TODO Auto-generated method stub
+						PreparedStatement pst = con.prepareStatement("select * from member where EMAIL = ?");
+						pst.setString(1, email);
+						return pst;
+					}
+				}, new MemberinfoRowMapper() );	
 				
 		return results.isEmpty() ? null : results.get(0);
 	}
