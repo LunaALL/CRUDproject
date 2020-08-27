@@ -55,9 +55,7 @@ public class BoardDAO {
 		jdbcTemplate.update(
 		"update bbs set bdTitle=?, bdContent=? where bdID=?",
 		board.getBdTitle(),board.getBdContent(),board.getBdID()
-		);
-		
-		
+		);	
 	}
 	
 	public void deleteBoard(int bdID) {
