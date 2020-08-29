@@ -40,7 +40,7 @@
 						<tr>	
 							<td>내용</td>
 							<td colspan="2" style="min-height:200px; text-align:left;">
-							${board.bdContent}
+							<pre>${board.bdContent} </pre>
 							</td>
 						</tr>			
 					</tbody>
