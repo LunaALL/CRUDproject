@@ -32,6 +32,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		// TODO Auto-generated method stub
 		registry.addViewController("/main").setViewName("member/main");
+		registry.addViewController("/test").setViewName("member/Viewtest");
 	}
 	
 	@Bean

@@ -24,8 +24,8 @@
 	<!-- 로긴폼 -->
 
 	<div class="container">
-		
-		<div class="col-lg-6">
+
+		<div class="col-lg-8">
 
 			<!-- 점보트론 -->
 
@@ -45,7 +45,7 @@
 				<p>
 					<개발자>(‘없음’이하 ‘개발자’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적
 					이외의 용도로는 이용하지 않습니다. - 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격
-					유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등
+					유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등 
 				</p>
 				<br> <br>
 
@@ -96,14 +96,15 @@
 				<div class="custom-control custom-checkbox"
 					style="text-align: center;">
 					<form action="registep2" method="post">
-					<p>	<label class="custom-control-label" for="jb-checkbox">약관을
-							동의합니다</label> <input type="checkbox" name="agree"
-							class="custom-control-input"
-							style="width: 17px; height: 17px;"> </p>
-							
-							
-					<input type="submit" class="btn btn-primary form-control" value="확인"
-					style="margin: 10px;">
+						<p>
+							<label class="custom-control-label" for="jb-checkbox">약관을
+								동의합니다</label> <input type="checkbox" name="agree"
+								class="custom-control-input" style="width: 17px; height: 17px;">
+						</p>
+
+
+						<input type="submit" class="btn btn-primary form-control"
+							value="확인" style="margin: 10px;">
 					</form>
 				</div>
 
@@ -112,17 +113,10 @@
 
 			</div>
 
+		</div>
+
 	</div>
 
-
-
-
-
-	<!-- 애니매이션 담당 JQUERY -->
-
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<!-- 부트스트랩 JS  -->
-	<script src="<c:url value="/resources/js/bootstrap.js" />"> </script>
 
 </body>
 

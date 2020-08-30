@@ -45,15 +45,18 @@
 							name="password" maxlength="20">
 						<form:errors path="password"></form:errors>
 					</div>
-					<input type="submit" class="btn btn-primary form-control"
-						value="로그인">
-
-
 					<div class="custom-control custom-switch">
 						<input type="checkbox" class="custom-control-input"
 							id="customSwitch1"> <label class="custom-control-label"
 							for="customSwitch1"><spring:message code="rememberemail"/></label>
 					</div>
+					
+					<p><input type="submit" class="btn btn-primary form-control"
+						value="로그인"> </p>
+						
+					<p><a href="/wordpressme/register/registep1" class="btn btn-primary form-control">회원가입</a></p>
+
+					
 
 
 				</form:form>

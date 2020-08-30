@@ -37,10 +37,11 @@
 					</p>
 				</div>
 			</c:if>
-
+			
+			<div class="text-center"> 
 			<img src="<spring:url value='/resources/img/main1.jpg'/>"
 				width="1000" height="500" border="0">
-
+			</div>
 
 		</div>
 

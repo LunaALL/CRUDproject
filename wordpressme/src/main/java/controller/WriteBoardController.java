@@ -34,7 +34,7 @@ public class WriteBoardController {
 	if(info==null) {
 		return "member/loginform";
 	}
-		return "edit/noticeboard";
+		return "edit/boardedit";
 	}
 	
 	@PostMapping()
@@ -44,7 +44,7 @@ public class WriteBoardController {
 	new WriteBoardValidator().validate(board, errors);
 	
 	if(errors.hasErrors()) {
-		return "edit/noticeboard";
+		return "edit/boardedit";
 	}
 		board.setUserID(info.getName());
 		

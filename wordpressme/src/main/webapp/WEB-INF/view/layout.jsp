@@ -39,7 +39,7 @@
 
 			</button>
 
-			<a class="navbar-brand" href="main"><spring:message code="bar1"></spring:message></a>
+			<a class="navbar-brand" href="/wordpressme/main"><spring:message code="bar1"></spring:message></a>
 
 		</div>
 
@@ -53,11 +53,10 @@
 
 
 			<%
-    
-    if(session.getAttribute("authinfo")==null){
-    	
-    %>
-			<ul class="nav navbar-nav navbar-right">
+				if (session.getAttribute("authinfo") == null) {
+			%>
+			
+			<ul class="nav navbar-nav navbar-right navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">접속하기<span class="caret"></span></a>
@@ -68,23 +67,28 @@
 
 
 
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
-			<% } else {  %>
+			<%
+				} else {
+			%>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">접속하기<span class="caret"></span></a>
+					aria-expanded="false">내 정보 관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/wordpressme/logout">로그아웃</a></li>
 						<li><a href="/wordpressme/member/change">비밀번호변경</a></li>
-
-
+						<li><a href="#">닉네임변경</a></li>
+						<li><a href="#">회원 탈퇴</a></li>
 					</ul></li>
 			</ul>
 
-			<% } %>
+			<%
+				}
+			%>
 		</div>
 	</nav>
 
@@ -100,7 +104,9 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<!-- 부트스트랩 JS  -->
-	<script src="<c:url value="/resources/js/bootstrap.js" />"> </script>
+	<script src="<c:url value="/resources/js/bootstrap.js" />">
+		
+	</script>
 
 </body>
 
