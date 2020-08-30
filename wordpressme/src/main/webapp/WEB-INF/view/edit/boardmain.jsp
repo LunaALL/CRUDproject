@@ -69,8 +69,6 @@
 						class="fa fa-chevron-right"></i></a></li>
 			</c:if>
 		</ul>
-
-
 	</div>
 	
 	
