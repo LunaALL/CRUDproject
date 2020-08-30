@@ -64,6 +64,8 @@ public class MainBoardController {
 		
 		mav.addObject("boards",bd);
 		mav.addObject("pageMaker",pagemaker);
+		mav.addObject("allmemcount",boardDAO.getAllMemberCount());
+		mav.addObject("allpage",boardDAO.getTotalCountpage() );
 		
 		return mav;
 		

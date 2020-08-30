@@ -102,5 +102,12 @@ public class BoardDAO {
 		return bd;
 
 	}
+	
+	public int getAllMemberCount() {
+		int num= jdbcTemplate.queryForObject("select count(*) from member",Integer.class);
+		return num;
+	}
+	
+	
 
 }
