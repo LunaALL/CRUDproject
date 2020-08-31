@@ -81,10 +81,13 @@ public class MemberDAO{
 	}
 	
 	
-	public boolean getAdmin(String email) {
+	public boolean isAdmin(String email) {
 		List<Memberinfo> results= jdbcTemplate.query("select * from member where admin=1 & EMAIL=?",new MemberinfoRowMapper(), email);
-		return results.get(0)==null ? true : false;
+		return results.get(0)==null ? false : true;
 	}
+	
+	
+
 	
 	
 

@@ -23,6 +23,8 @@ import edit.BoardDelupdateService;
 import edit.pageing.Criteria;
 import edit.pageing.PageMaker;
 import login.AuthInfo;
+import member.MemberAdminService;
+import member.MemberDAO;
 
 @Controller
 public class MainBoardController {
@@ -30,15 +32,16 @@ public class MainBoardController {
 	private BoardDAO boardDAO;
 	
 	private BoardDelupdateService boardDelupdateService;
-	
-	
+
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
 	}
 	
+
 	public void setBoardDelupdateService(BoardDelupdateService boardDelupdateService) {
 		this.boardDelupdateService = boardDelupdateService;
 	}
+	
 	
 	//@GetMapping("/board/boardList")
 	@GetMapping("/edit/main")
@@ -168,6 +171,7 @@ public class MainBoardController {
 		if(info==null) {
 			return "member/loginform";
 		}
+	
 		if(!info.getName().equals(name)) {
 			return "edit/errorpage";
 		}
