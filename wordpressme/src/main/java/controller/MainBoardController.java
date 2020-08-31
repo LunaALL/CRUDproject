@@ -30,11 +30,16 @@ import member.MemberDAO;
 public class MainBoardController {
 	
 	private BoardDAO boardDAO;
+	private MemberDAO memberDAO;
 	
 	private BoardDelupdateService boardDelupdateService;
 
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
+	}
+	
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO=memberDAO;
 	}
 	
 
@@ -168,8 +173,14 @@ public class MainBoardController {
 			@RequestParam(value="name",required = false) String name,HttpSession session) {
 		
 		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
+		
 		if(info==null) {
 			return "member/loginform";
+		}
+		
+		if(memberDAO.isAdmin(info.getEmail())) {
+			boardDelupdateService.DeleteCommit(bdID);
+			return "redirect:/edit/main";
 		}
 	
 		if(!info.getName().equals(name)) {

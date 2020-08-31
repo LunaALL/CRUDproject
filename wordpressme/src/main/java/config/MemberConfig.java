@@ -13,6 +13,7 @@ import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
+import member.MemberAdminService;
 import member.MemberDAO;
 import member.MemberRegiService;
 
@@ -45,6 +46,10 @@ public class MemberConfig {
 		return new BoardDAO(dataSource());
 	}
 	
+	@Bean
+	public MemberAdminService MemberAdminService() {
+		return new MemberAdminService(memberDAO());
+	}
 	
 	@Bean
 	public MemberRegiService memberRegiService() {

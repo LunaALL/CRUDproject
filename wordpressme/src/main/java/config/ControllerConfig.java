@@ -14,6 +14,7 @@ import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
+import member.MemberDAO;
 import member.MemberRegiService;
 
 @Configuration
@@ -36,6 +37,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private BoardDAO boardDAO;
+	
+	@Autowired
+	private MemberDAO memberDAO;
 	
 
 	@Bean
@@ -71,6 +75,7 @@ public class ControllerConfig {
 		MainBoardController main = new MainBoardController();
 		main.setBoardDelupdateService(boardDelupdateService);
 		main.setBoardDAO(boardDAO);
+		main.setMemberDAO(memberDAO);
 		return main;
 	}
 	
