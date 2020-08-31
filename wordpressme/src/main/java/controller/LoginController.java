@@ -55,6 +55,9 @@ public class LoginController {
 				rememberCookie.setMaxAge(0);
 			}
 			response.addCookie(rememberCookie);
+			if(authinfo.getAdmin()==1) {
+				httpSession.setAttribute("Admin", authinfo);
+			}
 			
 			httpSession.setAttribute("authinfo", authinfo);
 			

@@ -20,7 +20,13 @@ public class AuthService {
 		if(!memberin.matchmemberpassword(password) ) {
 			throw new WrongPasswordException();
 		}
-		return new AuthInfo(memberin.getId(), memberin.getEmail(), memberin.getName());
+		AuthInfo auth = new AuthInfo(memberin.getId(), memberin.getEmail(), memberin.getName());
+		if(memberDAO.isAdmin(memberin.getEmail())) {
+			auth.admin=1;
+		}
+		
+		
+		return auth;
 		
 	}
 	

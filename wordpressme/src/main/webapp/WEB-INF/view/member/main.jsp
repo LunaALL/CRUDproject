@@ -29,11 +29,19 @@
 					<p>글 쓰기를 하려면 로그인 해주세요.</p>
 				</div>
 			</c:if>
+			
+			<c:if test="${!empty Admin}">
+				<div class="form-group">
+					<p>반갑습니다 운영자님. 관리자 계정으로 접속하셨습니다.</p>
+				</div>
+			</c:if>
+			
 
 			<c:if test="${!empty authinfo }">
 				<div class="form-group">
 					<p>
-						<strong>${authinfo.name}</strong> 님. 환영합니다
+						<strong>${authinfo.name}</strong> 님. 환영합니다.
+						
 					</p>
 				</div>
 			</c:if>

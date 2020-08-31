@@ -4,7 +4,18 @@ public class AuthInfo {
 	private Long id;
 	private String email;
 	private String name;
+	int admin=0;
 	
+	public int getAdmin() {
+		return admin;
+	}
+
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
+
+
 	public AuthInfo(Long id, String email, String name) {
 		super();
 		this.id = id;
@@ -26,6 +37,8 @@ public class AuthInfo {
 	public String getName() {
 		return name;
 	}
+	
+	
 
 
 	
