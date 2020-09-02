@@ -21,6 +21,7 @@ public class AuthService {
 			throw new WrongPasswordException();
 		}
 		AuthInfo auth = new AuthInfo(memberin.getId(), memberin.getEmail(), memberin.getName());
+		
 		if(memberDAO.isAdmin(memberin.getEmail())) {
 			auth.admin=1;
 		}

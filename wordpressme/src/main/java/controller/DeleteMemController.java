@@ -1,7 +1,9 @@
 package controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,11 +35,13 @@ public class DeleteMemController {
 	}
 	
 	@PostMapping
-	public String delmempost(String repwd, HttpSession session) {
+	public String delmempost(HttpServletRequest request, HttpSession session) {
 		AuthInfo auth = (AuthInfo)session.getAttribute("authinfo");
 		if(auth==null) {
 			return "member/loginform";
 		}
+		
+		String repwd=request.getParameter("repwd");
 		
 		
 		if(deleteMemService.deleteService(auth.getEmail(), repwd) ) {

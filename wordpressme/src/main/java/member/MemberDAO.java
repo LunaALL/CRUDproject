@@ -82,8 +82,12 @@ public class MemberDAO{
 	
 	
 	public boolean isAdmin(String email) {
-		List<Memberinfo> results= jdbcTemplate.query("select * from member where admin=1 & EMAIL=?",new MemberinfoRowMapper(), email);
-		return results.get(0)==null ? false : true;
+		List<Memberinfo> results= jdbcTemplate.query("select * from member where admin=1 && EMAIL=?",new MemberinfoRowMapper(), email);
+		if(results.isEmpty()) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	

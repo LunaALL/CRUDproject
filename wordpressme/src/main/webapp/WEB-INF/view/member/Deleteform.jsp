@@ -22,7 +22,8 @@
 
 
 				<h3 style="text-align: center;">회원 탈퇴 신청 화면</h3>
-				<form:form action="/wordpressme/deletemem" method="post">
+				
+				<form action="/wordpressme/deletemem" method="post">
 					<div class="form-group">
 					<p>비밀번호를 다시 입력해주세요. </p>
 					</div>
@@ -32,10 +33,12 @@
 							name="repwd" maxlength="20">
 					</div>
 					
-					
 					<p><input type="submit" class="btn btn-primary form-control"
 						value="확인"> </p>
-				</form:form>
+
+				
+				</form>
+				
 			</div>
 
 		</div>
