@@ -4,6 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+pre {
+background-color: #FFFFFF;
+font-size:14px;
+}
+
+</style>
 <meta charset="UTF-8">
 <title>게시판 보기</title>
 </head>
@@ -53,9 +60,4 @@
 			</div>		
 		</div>	
 	</body>
-</html>
-
-
-
-</body>
 </html>

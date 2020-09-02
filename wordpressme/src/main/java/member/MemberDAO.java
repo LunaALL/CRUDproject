@@ -87,6 +87,12 @@ public class MemberDAO{
 	}
 	
 	
+	public boolean deleteMem(String email) {
+		jdbcTemplate.update("delete from member where email=?",email);
+		return true;
+	}
+	
+	
 
 	
 	

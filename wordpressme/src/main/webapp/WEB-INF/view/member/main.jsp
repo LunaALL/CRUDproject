@@ -5,17 +5,31 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.jumbotronTransp {
+   padding: 30px;
+   margin-bottom: 20px;
+   font-size: 21px;
+   font-weight: 100;
+   line-height: 1;
+   color: inherit;
+   background-color: transparent;
+}
+
+</style>
 <jsp:include page="../layout.jsp" />
 <meta charset="UTF-8">
 <c:url value="/img/main1.jpg" var="main1" />
 <title>메인페이지</title>
+
 </head>
 <body>
-	<div class="jumbotron" style="padding-top: 20px;">
-
+	<div class="jumbotronTransp" style="padding-top: 20px;">
 		<div class="container">
 			<h2 style="font-family: verdana;">
 				<spring:message code="member.welcome" />

@@ -18,7 +18,7 @@
 
 <!-- 스타일시트 참조  -->
 
-<title><spring:message code="member.register"></spring:message></title>
+
 <style>
 </style>
 </head>
@@ -85,7 +85,7 @@
 						<li><a href="/wordpressme/logout">로그아웃</a></li>
 						<li><a href="/wordpressme/member/change">비밀번호변경</a></li>
 						<li><a href="#">닉네임변경</a></li>
-						<li><a href="#">회원 탈퇴</a></li>
+						<li><a href="/wordpressme/deletemem">회원 탈퇴</a></li>
 					</ul></li>
 			</ul>
 

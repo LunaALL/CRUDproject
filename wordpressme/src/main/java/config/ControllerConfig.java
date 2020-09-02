@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import controller.ChangePwdController;
+import controller.DeleteMemController;
 import controller.LoginController;
 import controller.MainBoardController;
 import controller.RegisterController;
@@ -14,6 +15,7 @@ import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
+import member.DeleteMemService;
 import member.MemberDAO;
 import member.MemberRegiService;
 
@@ -34,6 +36,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private BoardDelupdateService boardDelupdateService;
+	
+	@Autowired
+	private DeleteMemService deleteMemService;
 	
 	@Autowired
 	private BoardDAO boardDAO;
@@ -77,6 +82,14 @@ public class ControllerConfig {
 		main.setBoardDAO(boardDAO);
 		main.setMemberDAO(memberDAO);
 		return main;
+	}
+	
+	@Bean
+	public DeleteMemController deleteMemController() {
+		DeleteMemController del = new DeleteMemController();
+		del.setDeleteMemService(deleteMemService);
+		return del;
+		
 	}
 	
 	

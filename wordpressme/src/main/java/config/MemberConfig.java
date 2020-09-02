@@ -13,6 +13,7 @@ import edit.BoardDelupdateService;
 import edit.BoardWriteService;
 import login.AuthService;
 import member.ChangePasswordService;
+import member.DeleteMemService;
 import member.MemberAdminService;
 import member.MemberDAO;
 import member.MemberRegiService;
@@ -76,6 +77,13 @@ public class MemberConfig {
 		ChangePasswordService ct= new ChangePasswordService();
 		return ct;
 		
+	}
+	
+	@Bean
+	public DeleteMemService DeleteMemService() {
+		DeleteMemService ds = new DeleteMemService();
+		ds.setMemberAO(memberDAO());
+		return ds;
 	}
 	
 	@Bean
