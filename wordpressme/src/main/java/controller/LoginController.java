@@ -19,61 +19,57 @@ import validator.LoginCommandValidator;
 
 @Controller
 public class LoginController {
-	
+
 	private AuthService authService;
-	
+
 	public void setAuthService(AuthService authService) {
-		this.authService=authService;
+		this.authService = authService;
 	}
-	
+
 	@GetMapping("/login")
-	public String login(LoginCommand loginCommand, @CookieValue(value="REMEMBER", required = false) Cookie rCookie) {
-		if(rCookie!=null) {
+	public String login(LoginCommand loginCommand, @CookieValue(value = "REMEMBER", required = false) Cookie rCookie) {
+		if (rCookie != null) {
 			loginCommand.setEmail(rCookie.getValue());
 			loginCommand.setRememberEmail(true);
 		}
-		
+
 		return "member/loginform";
 	}
-	
+
 	@PostMapping("/login")
-	public String submit(@ModelAttribute LoginCommand loginCommand, Errors errors,
-			HttpSession httpSession, HttpServletResponse response) {
+	public String submit(@ModelAttribute LoginCommand loginCommand, Errors errors, HttpSession httpSession,
+			HttpServletResponse response) {
 		new LoginCommandValidator().validate(loginCommand, errors);
-		if(errors.hasErrors()) {
+		if (errors.hasErrors()) {
 			return "member/loginform";
 		}
 		try {
-			AuthInfo authinfo= authService.authenticate(loginCommand.getEmail(), 
-					loginCommand.getPassword());
-			
+			AuthInfo authinfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
+
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getEmail());
 			rememberCookie.setPath("/");
-			if(loginCommand.isRememberEmail() ) {
-				rememberCookie.setMaxAge(60*60*24*30);
-			}else {
+			if (loginCommand.isRememberEmail()) {
+				rememberCookie.setMaxAge(60 * 60 * 24 * 30);
+			} else {
 				rememberCookie.setMaxAge(0);
 			}
 			response.addCookie(rememberCookie);
-			if(authinfo.getAdmin()==1) {
+			if (authinfo.getAdmin() == 1) {
 				httpSession.setAttribute("Admin", authinfo);
 			}
-			
+
 			httpSession.setAttribute("authinfo", authinfo);
-			
+
 			return "member/main";
-		}catch(WrongPasswordException e) {
+		} catch (WrongPasswordException e) {
 			errors.rejectValue("password", "errorpassword");
 			return "member/loginform";
 		}
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout() {
 		return "member/logout";
 	}
-	
-	
-	
 
 }
