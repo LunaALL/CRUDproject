@@ -37,9 +37,7 @@ public class DeleteMemController {
 	@PostMapping
 	public String delmempost(HttpServletRequest request, HttpSession session) {
 		AuthInfo auth = (AuthInfo)session.getAttribute("authinfo");
-		if(auth==null) {
-			return "member/loginform";
-		}
+		
 		
 		String repwd=request.getParameter("repwd");
 		
@@ -47,7 +45,7 @@ public class DeleteMemController {
 		if(deleteMemService.deleteService(auth.getEmail(), repwd) ) {
 			return "member/deletebye";
 		}else {
-			return "member/deleteform";
+			return "member/Deleteform";
 		}
 		
 		

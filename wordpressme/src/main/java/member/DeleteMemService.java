@@ -21,7 +21,8 @@ public class DeleteMemService {
 	
 	public boolean deleteService(String email, String pwd) {
 		if(equalPwd(email,pwd)) {
-			memberDAO.deleteMem(email);
+			//memberDAO.deleteMem(email);
+			return true;
 		}
 		
 		return false;
