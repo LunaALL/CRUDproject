@@ -95,7 +95,6 @@ public class BoardDAO {
 	}
 
 	public List<Board> getDivPage(Criteria cri) {
-
 		List<Board> bd = jdbcTemplate.query("select * from bbs order by bdID desc limit ? , ?", row, cri.getPageStart(),
 				cri.getPerPageNum());
 
