@@ -9,6 +9,14 @@ public class ReplyVO {
 	private String writer;
 	private LocalDateTime bdcdate;
 	
+	public ReplyVO(int boardnum, int commentnum, String content, String writer, LocalDateTime bdcdate) {
+		super();
+		this.boardnum = boardnum;
+		this.commentnum = commentnum;
+		this.content = content;
+		this.writer = writer;
+		this.bdcdate = bdcdate;
+	}
 	public int getBoardnum() {
 		return boardnum;
 	}

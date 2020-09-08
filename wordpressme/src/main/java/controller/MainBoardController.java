@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ import edit.Board;
 import edit.BoardDAO;
 import edit.BoardDelupdateCommand;
 import edit.BoardDelupdateService;
+import edit.ReplyService;
+import edit.ReplyVO;
 import edit.pageing.Criteria;
 import edit.pageing.PageMaker;
 import login.AuthInfo;
@@ -33,7 +36,9 @@ public class MainBoardController {
 	private MemberDAO memberDAO;
 	
 	private BoardDelupdateService boardDelupdateService;
-
+	
+	@Autowired
+	private ReplyService replyService;
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
 	}
@@ -125,7 +130,11 @@ public class MainBoardController {
 		
 		board.setBdTitle(head);
 		board.setBdContent(body);
+		
+		List<ReplyVO> results=replyService.GetReply(page);
+	
 		model.addAttribute("board",board);
+		model.addAttribute("replylist",results);
 		
 		return "edit/BoardView";
 		

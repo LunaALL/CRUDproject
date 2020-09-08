@@ -11,6 +11,9 @@ import edit.BoardDAO;
 import edit.BoardDelupdateCommand;
 import edit.BoardDelupdateService;
 import edit.BoardWriteService;
+import edit.ReplyDAO;
+import edit.ReplyService;
+import edit.ReplyVO;
 import login.AuthService;
 import member.ChangePasswordService;
 import member.DeleteMemService;
@@ -46,7 +49,10 @@ public class MemberConfig {
 	public BoardDAO boardDAO() {
 		return new BoardDAO(dataSource());
 	}
-	
+	@Bean
+	public ReplyDAO replyDAO() {
+		return new ReplyDAO(dataSource());
+	}
 	@Bean
 	public MemberAdminService MemberAdminService() {
 		return new MemberAdminService(memberDAO());
@@ -84,6 +90,12 @@ public class MemberConfig {
 		DeleteMemService ds = new DeleteMemService();
 		ds.setMemberAO(memberDAO());
 		return ds;
+	}
+	@Bean
+	public ReplyService replyService() {
+		ReplyService rp = new ReplyService();
+		rp.setReplyDAO(replyDAO());
+		return rp;
 	}
 	
 	@Bean
