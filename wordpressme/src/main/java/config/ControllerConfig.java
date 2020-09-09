@@ -13,6 +13,7 @@ import controller.WriteBoardController;
 import edit.BoardDAO;
 import edit.BoardDelupdateService;
 import edit.BoardWriteService;
+import edit.ReplyService;
 import login.AuthService;
 import member.ChangePasswordService;
 import member.DeleteMemService;
@@ -45,6 +46,9 @@ public class ControllerConfig {
 	
 	@Autowired
 	private MemberDAO memberDAO;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 
 	@Bean
@@ -81,6 +85,7 @@ public class ControllerConfig {
 		main.setBoardDelupdateService(boardDelupdateService);
 		main.setBoardDAO(boardDAO);
 		main.setMemberDAO(memberDAO);
+		main.setReplyService(replyService);
 		return main;
 	}
 	

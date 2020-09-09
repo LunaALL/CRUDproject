@@ -14,7 +14,7 @@ public class ReplyRowMapper implements RowMapper<ReplyVO>{
 				rs.getInt("commentnum"),
 				rs.getString("content"),
 				rs.getString("writer"),
-				rs.getTimestamp("bdcdate").toLocalDateTime()
+				rs.getTimestamp("bdcDate").toLocalDateTime() 
 				);
 		
 		

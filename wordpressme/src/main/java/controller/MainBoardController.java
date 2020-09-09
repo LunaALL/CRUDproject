@@ -37,8 +37,13 @@ public class MainBoardController {
 	
 	private BoardDelupdateService boardDelupdateService;
 	
-	@Autowired
+	
 	private ReplyService replyService;
+	
+	public void setReplyService(ReplyService replyService) {
+		this.replyService = replyService;
+	}
+
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
 	}
@@ -115,11 +120,13 @@ public class MainBoardController {
 	
 	
 	@GetMapping("/edit/editview")
-	public String clickBoard(@RequestParam(value="bdID", required = false) int page , Model model, HttpSession session) {
+	public ModelAndView clickBoard(@RequestParam(value="bdID", required = false) int page , Model model, HttpSession session) {
 		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
 		if(info==null) {
-			return "member/loginform";
+			ModelAndView mv = new ModelAndView("/member/loginform");
+			return mv;
 		}
+		ModelAndView mv = new ModelAndView("/edit/BoardView");
 		Board board= boardDAO.getselectpage(page);
 		String head=board.getBdTitle();
 		String body=board.getBdContent();
@@ -132,11 +139,9 @@ public class MainBoardController {
 		board.setBdContent(body);
 		
 		List<ReplyVO> results=replyService.GetReply(page);
-	
-		model.addAttribute("board",board);
-		model.addAttribute("replylist",results);
-		
-		return "edit/BoardView";
+		mv.addObject("board", board);
+		mv.addObject("replylist", results);
+		return mv;
 		
 	}
 	

@@ -11,13 +11,6 @@ import java.util.List;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
-
-import com.mysql.cj.protocol.Resultset;
-
-import controller.WriteBoardController;
 import edit.pageing.Criteria;
 
 public class BoardDAO {

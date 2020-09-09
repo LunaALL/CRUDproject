@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="tf" tagdir="/WEB-INF/tags" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +60,27 @@ font-size:14px;
 				<a href="update?bdID=${board.bdID}" class="btn btn-primary">수정</a>
 				<a href="delete?bdID=${board.bdID}&name=${board.userID}" class="btn btn-primary">삭제</a>
 
-			</div>		
-		</div>	
-	</body>
+			</div>			
+		</div>
+
+	<div class="container">
+
+		<ol>
+			<c:forEach var="Replylist" items="${replylist}">
+				<li>
+					<p>
+						작성자: ${Replylist.writer} <br />
+						<tf:time value="${Replylist.bdcDate}"
+							pattern="yyyy년 MM월 dd일  HH:mm" />
+					</p>
+					<p>${Replylist.content}</p>
+
+				</li>
+			</c:forEach>
+
+		</ol>
+
+
+	</div>
+</body>
 </html>

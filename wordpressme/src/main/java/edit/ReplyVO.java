@@ -7,22 +7,28 @@ public class ReplyVO {
 	private int commentnum;
 	private String content;
 	private String writer;
-	private LocalDateTime bdcdate;
+	private LocalDateTime bdcDate;
 	
-	public ReplyVO(int boardnum, int commentnum, String content, String writer, LocalDateTime bdcdate) {
+	public ReplyVO(int boardnum, int commentnum, String content, String writer, LocalDateTime bdcDate) {
 		super();
 		this.boardnum = boardnum;
 		this.commentnum = commentnum;
 		this.content = content;
 		this.writer = writer;
-		this.bdcdate = bdcdate;
+		this.bdcDate = bdcDate;
+	}
+	public LocalDateTime getBdcDate() {
+		return bdcDate;
+	}
+	public void setBdcDate(LocalDateTime bdcDate) {
+		this.bdcDate = bdcDate;
 	}
 	public int getBoardnum() {
 		return boardnum;
 	}
 	public void setBoardnum(int boardnum) {
 		this.boardnum = boardnum;
-	}
+	} 
 	public int getCommentnum() {
 		return commentnum;
 	}
@@ -42,10 +48,5 @@ public class ReplyVO {
 		this.writer = writer;
 	}
 	
-	@Override
-	public String toString() {
-		return "ReplyVO [bno=" + boardnum + ", rno=" + commentnum + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ bdcdate + "]";
-	}
 
 }
