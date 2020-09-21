@@ -39,7 +39,8 @@
 
 			</button>
 
-			<a class="navbar-brand" href="/wordpressme/main"><spring:message code="bar1"></spring:message></a>
+			<a class="navbar-brand" href="/wordpressme/main"><spring:message
+					code="bar1"></spring:message></a>
 
 		</div>
 
@@ -49,16 +50,20 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/wordpressme/main">코드데이터 메인</a></li>
 				<li><a href="/wordpressme/edit/main">코드 게시판</a></li>
-				<% if (session.getAttribute("Admin")!=null){ %>
-				<li><a href="/wordpressme/admin">관리자 페이지</a> </li>
-				<% } %>
+				<%
+					if (session.getAttribute("Admin") != null) {
+				%>
+				<li><a href="/wordpressme/admin">관리자 페이지</a></li>
+				<%
+					}
+				%>
 			</ul>
 
 
 			<%
 				if (session.getAttribute("authinfo") == null) {
 			%>
-			
+
 			<ul class="nav navbar-nav navbar-right navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -70,8 +75,7 @@
 
 
 
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<%
 				} else {
