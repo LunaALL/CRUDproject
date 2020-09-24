@@ -9,15 +9,10 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 뷰포트 -->
 
 <meta name="viewport" content="width=device-width" initial-scale="1">
-
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-
-<!-- 스타일시트 참조  -->
-
 
 <style>
 </style>
@@ -88,7 +83,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/wordpressme/logout">로그아웃</a></li>
 						<li><a href="/wordpressme/member/change">비밀번호변경</a></li>
-						<li><a href="#">닉네임변경</a></li>
+						<li><a href="/wordpressme/member/nickch">닉네임변경</a></li>
 						<li><a href="/wordpressme/deletemem">회원 탈퇴</a></li>
 					</ul></li>
 			</ul>
@@ -98,19 +93,7 @@
 			%>
 		</div>
 	</nav>
-
-	<!-- 로긴폼 -->
-
-
-
-
-
-
-
-	<!-- 애니매이션 담당 JQUERY -->
-
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<!-- 부트스트랩 JS  -->
 	<script src="<c:url value="/resources/js/bootstrap.js" />">
 		
 	</script>
