@@ -16,41 +16,35 @@ import member.MemberDAO;
 @Controller
 @RequestMapping("/deletemem")
 public class DeleteMemController {
-	
+
 	private DeleteMemService deleteMemService;
-	
+
 	public void setDeleteMemService(DeleteMemService deleteMemService) {
 		this.deleteMemService = deleteMemService;
 	}
 
 	@GetMapping
 	public String delmem(HttpSession session) {
-		AuthInfo auth = (AuthInfo)session.getAttribute("authinfo");
-		if(auth==null) {
+		AuthInfo auth = (AuthInfo) session.getAttribute("authinfo");
+		if (auth == null) {
 			return "member/loginform";
 		}
-		
-		
+
 		return "member/Deleteform";
 	}
-	
+
 	@PostMapping
 	public String delmempost(HttpServletRequest request, HttpSession session) {
-		AuthInfo auth = (AuthInfo)session.getAttribute("authinfo");
-		
-		
-		String repwd=request.getParameter("repwd");
-		
-		
-		if(deleteMemService.deleteService(auth.getEmail(), repwd) ) {
+		AuthInfo auth = (AuthInfo) session.getAttribute("authinfo");
+
+		String repwd = request.getParameter("repwd");
+
+		if (deleteMemService.deleteService(auth.getEmail(), repwd)) {
 			return "member/deletebye";
-		}else {
+		} else {
 			return "member/Deleteform";
 		}
-		
-		
-		
-		
+
 	}
 
 }
