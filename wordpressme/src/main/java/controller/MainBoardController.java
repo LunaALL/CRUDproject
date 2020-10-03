@@ -132,9 +132,7 @@ public class MainBoardController {
 		String body=board.getBdContent();
 		head=filterStr(head);
 		body=filterStr(body);
-		
 		body.replace("\r\n", "<br/>");
-		
 		board.setBdTitle(head);
 		board.setBdContent(body);
 		
