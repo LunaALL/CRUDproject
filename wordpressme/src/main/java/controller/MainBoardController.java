@@ -122,7 +122,8 @@ public class MainBoardController {
 	@GetMapping("/edit/editview")
 	public ModelAndView clickBoard(@RequestParam(value="bdID", required = false) int page , Model model, HttpSession session) {
 		AuthInfo info=(AuthInfo)session.getAttribute("authinfo");
-		if(info==null) {
+		if(info==null) 
+		{
 			ModelAndView mv = new ModelAndView("/member/loginform");
 			return mv;
 		}
@@ -135,7 +136,6 @@ public class MainBoardController {
 		body.replace("\r\n", "<br/>");
 		board.setBdTitle(head);
 		board.setBdContent(body);
-		
 		List<ReplyVO> results=replyService.GetReply(page);
 		mv.addObject("board", board);
 		mv.addObject("replylist", results);
