@@ -50,7 +50,6 @@ public class BoardDAO {
 
 	public void deleteBoard(int bdID) {
 		jdbcTemplate.update("delete from bbs where bdID=?", bdID);
-
 	}
 
 	public List<Board> getpage(int pageNum) {

@@ -91,6 +91,7 @@ public class MemberConfig {
 		ds.setMemberAO(memberDAO());
 		return ds;
 	}
+	
 	@Bean
 	public ReplyService replyService() {
 		ReplyService rp = new ReplyService();
