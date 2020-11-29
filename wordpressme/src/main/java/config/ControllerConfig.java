@@ -22,34 +22,33 @@ import member.MemberRegiService;
 
 @Configuration
 public class ControllerConfig {
-	
+
 	@Autowired
 	private MemberRegiService memberRegiService;
-	
+
 	@Autowired
 	private AuthService authService;
-	
+
 	@Autowired
 	private ChangePasswordService changePasswordService;
-	
+
 	@Autowired
 	private BoardWriteService boardWriteService;
-	
+
 	@Autowired
 	private BoardDelupdateService boardDelupdateService;
-	
+
 	@Autowired
 	private DeleteMemService deleteMemService;
-	
+
 	@Autowired
 	private BoardDAO boardDAO;
-	
+
 	@Autowired
 	private MemberDAO memberDAO;
-	
+
 	@Autowired
 	private ReplyService replyService;
-	
 
 	@Bean
 	public RegisterController registerController() {
@@ -57,28 +56,28 @@ public class ControllerConfig {
 		ct.setMemberRegiService(memberRegiService);
 		return ct;
 	}
-	
+
 	@Bean
 	public LoginController loginController() {
 		LoginController ct = new LoginController();
 		ct.setAuthService(authService);
 		return ct;
 	}
-	
+
 	@Bean
 	public WriteBoardController writeBoardController() {
 		WriteBoardController ct = new WriteBoardController();
 		ct.setBoardWriteService(boardWriteService);
 		return ct;
 	}
-	
+
 	@Bean
 	public ChangePwdController changePwdController() {
-		ChangePwdController ct= new ChangePwdController();
+		ChangePwdController ct = new ChangePwdController();
 		ct.setChangePwdController(changePasswordService);
 		return ct;
 	}
-	
+
 	@Bean
 	public MainBoardController mainBoardController() {
 		MainBoardController main = new MainBoardController();
@@ -88,17 +87,13 @@ public class ControllerConfig {
 		main.setReplyService(replyService);
 		return main;
 	}
-	
+
 	@Bean
 	public DeleteMemController deleteMemController() {
 		DeleteMemController del = new DeleteMemController();
 		del.setDeleteMemService(deleteMemService);
 		return del;
-		
+
 	}
-	
-	
-	
-	
 
 }
