@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -59,6 +59,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>5.0.2.RELEASE</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
