@@ -10,13 +10,11 @@ import member.MemberAdminService;
 @Controller
 @RequestMapping("/Admin")
 public class AdminController {
-	
+
 	private MemberAdminService memberAdminService;
 
 	public void setMemberAdminService(MemberAdminService memberAdminService) {
 		this.memberAdminService = memberAdminService;
 	}
-	
-	
 
 }

@@ -107,7 +107,7 @@ public class MainBoardController {
 			HttpSession session) {
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		if (info == null) {
-			//로그인 없이 들어오지 말자. 
+			// 로그인 없이 들어오지 말자.
 			ModelAndView mv = new ModelAndView("/member/loginform");
 			return mv;
 		}
