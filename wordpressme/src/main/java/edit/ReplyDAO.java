@@ -24,6 +24,7 @@ public class ReplyDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	//댓글 목록 메서드. JDBC 호출. bdID 게시글 넘버에 종속됨. 
 	public List<ReplyVO> AllGetList(int boardnum){
 		List<ReplyVO> results= jdbcTemplate.query("SELECT * FROM bdcomments where boardnum=?"
 				, row, boardnum);
@@ -31,6 +32,7 @@ public class ReplyDAO {
 		
 	}
 	
+	//댓글 입력 메서드. JDBC 입력. 
 	public void InputComment(ReplyVO vo) {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
@@ -48,6 +50,15 @@ public class ReplyDAO {
 			}
 		});
     }
+	
+	//댓글 번호를 가져오는 메서드. 인자는 게시글 번호
+	public int getCommentnum(int bdId) {
+		int result=jdbcTemplate.queryForObject("select commentnum from bdcomments where boardnum = ? order by commentnum  desc limit 1",
+				Integer.class, bdId);
+		
+		return result;
+		
+	}
 	
 	
 

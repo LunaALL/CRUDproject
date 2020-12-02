@@ -80,10 +80,12 @@ font-size:14px;
 			</c:forEach>
 
 		</ol>
+		 
+		<form:form action="/replyedit" method="post" modelAttribute="replycommand">
+		${authinfo.name}
 		
-		<form:form action="/reply" method="post" modelAttribute="">
-		내용 : 
-				
+		
+		
 		</form:form>
 
 

@@ -2,6 +2,7 @@ package edit;
 
 import java.time.LocalDateTime;
 
+//댓글 관련 이벤트를 위한 VO. 댓글 객체 
 public class ReplyVO {
 	private int boardnum;
 	private int commentnum;
