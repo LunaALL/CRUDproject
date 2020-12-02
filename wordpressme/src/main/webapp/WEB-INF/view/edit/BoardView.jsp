@@ -78,11 +78,11 @@ font-size:14px;
 
 				</li>
 			</c:forEach>
-
+${authinfo.name}
 		</ol>
 		 
-		<form:form action="/replyedit" method="post" modelAttribute="replycommand">
-		${authinfo.name}
+		<form:form action="/replyedit?bdID=${board.bdID}" method="post" modelAttribute="replycommand">
+		
 		
 		
 		

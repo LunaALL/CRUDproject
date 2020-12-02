@@ -17,8 +17,15 @@ public class ReplyService {
 	
 	public List<ReplyVO>GetReply(int pagenum) {
 		return replyDAO.AllGetList(pagenum);
-		
 	}
+	
+	public void inputComment(ReplyVO vo) {
+		int commentnum=replyDAO.getCommentnum(vo.getBoardnum());
+		vo.setCommentnum(commentnum);
+		replyDAO.InputComment(vo);
+	}
+	
+	
 	
 	
 	

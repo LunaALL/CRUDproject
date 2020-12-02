@@ -105,6 +105,7 @@ public class MainBoardController {
 	@GetMapping("/edit/editview")
 	public ModelAndView clickBoard(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
+		//게시글 상세보기 처리 메서드. 
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		if (info == null) {
 			// 로그인 없이 들어오지 말자.

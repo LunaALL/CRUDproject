@@ -26,6 +26,7 @@ public class WriteBoardController {
 
 	@GetMapping()
 	public String writeboard(HttpSession session) {
+		//게시판 목록 메인. 
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		if (info == null) {
 			return "member/loginform";
@@ -36,6 +37,7 @@ public class WriteBoardController {
 	@PostMapping()
 	public String postwriteboard(@ModelAttribute("writecommand") BoardWriteCommand board, HttpSession session,
 			Errors errors) {
+		//게시글 작성 처리 메서드. 
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		new WriteBoardValidator().validate(board, errors);
 
@@ -58,6 +60,7 @@ public class WriteBoardController {
 	}
 
 	public String filterStr(String str) {
+		//크로스 사이트 스크립팅 공격 방지. 
 		if (str.indexOf("<script>") != -1) {
 			str = str.replaceAll("<script>", "");
 		}

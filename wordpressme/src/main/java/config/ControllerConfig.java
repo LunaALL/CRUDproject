@@ -9,6 +9,7 @@ import controller.DeleteMemController;
 import controller.LoginController;
 import controller.MainBoardController;
 import controller.RegisterController;
+import controller.ReplyController;
 import controller.WriteBoardController;
 import edit.BoardDAO;
 import edit.BoardDelupdateService;
@@ -93,7 +94,13 @@ public class ControllerConfig {
 		DeleteMemController del = new DeleteMemController();
 		del.setDeleteMemService(deleteMemService);
 		return del;
-
+	}
+	
+	@Bean
+	public ReplyController replyController() {
+		ReplyController rel = new ReplyController();
+		rel.setReplyService(replyService);
+		return rel;
 	}
 
 }
