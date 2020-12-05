@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 
@@ -46,12 +47,18 @@ public class ReplyDAO {
 		});
 	}
 
-	// 댓글 번호를 가져오는 메서드. 인자는 게시글 번호
+	// 다음 댓글 번호를 가져오는 메서드. 인자는 게시글 번호. 1더해서 리턴
 	public int getCommentnum(int bdId) {
-		int result = jdbcTemplate.queryForObject(
-				"select commentnum from bdcomments where boardnum = ? order by commentnum  desc limit 1", Integer.class,
-				bdId);
-		return result;
+		int result = 0;
+		try {
+			result = jdbcTemplate.queryForObject(
+					"select commentnum from bdcomments where boardnum = ? order by commentnum  desc limit 1",
+					Integer.class, bdId);
+		} catch (EmptyResultDataAccessException e) {
+			result = 0;
+		}
+
+		return result + 1;
 
 	}
 

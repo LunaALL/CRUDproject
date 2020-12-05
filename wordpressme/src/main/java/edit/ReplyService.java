@@ -15,12 +15,15 @@ public class ReplyService {
 		this.replyDAO = replyDAO;
 	}
 	
+	//댓글 전체 목록 요청 ,bdID 종속
 	public List<ReplyVO>GetReply(int pagenum) {
 		return replyDAO.AllGetList(pagenum);
 	}
 	
+	//db 입력. 
 	public void inputComment(ReplyVO vo) {
 		int commentnum=replyDAO.getCommentnum(vo.getBoardnum());
+		
 		vo.setCommentnum(commentnum);
 		replyDAO.InputComment(vo);
 	}

@@ -18,6 +18,11 @@ public class ReplyVO {
 		this.writer = writer;
 		this.bdcDate = bdcDate;
 	}
+	
+	public ReplyVO() {
+		
+	}
+	
 	public LocalDateTime getBdcDate() {
 		return bdcDate;
 	}

@@ -32,9 +32,7 @@ public class MainBoardController {
 
 	private BoardDAO boardDAO;
 	private MemberDAO memberDAO;
-
 	private BoardDelupdateService boardDelupdateService;
-
 	private ReplyService replyService;
 
 	public void setReplyService(ReplyService replyService) {
@@ -58,10 +56,13 @@ public class MainBoardController {
 	public ModelAndView BoardMain(@RequestParam(value = "page", required = true, defaultValue = "1") int page) {
 
 		ModelAndView mav = new ModelAndView("/edit/boardmain");
+		// 게시판 페이징 부분.
 		Criteria cri = new Criteria();
 		cri.setPage(page);
 		PageMaker pagemaker = new PageMaker();
+		//전체 게시글 요청. 
 		List<Board> bd = boardDAO.getDivPage(cri);
+
 		for (Board board : bd) {
 			String head = board.getBdTitle();
 			String body = board.getBdContent();
@@ -105,7 +106,7 @@ public class MainBoardController {
 	@GetMapping("/edit/editview")
 	public ModelAndView clickBoard(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
-		//게시글 상세보기 처리 메서드. 
+		// 게시글 상세보기 처리 메서드.
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		if (info == null) {
 			// 로그인 없이 들어오지 말자.
@@ -116,9 +117,12 @@ public class MainBoardController {
 		Board board = boardDAO.getselectpage(page);
 		String head = board.getBdTitle();
 		String body = board.getBdContent();
+		// SSL 방지
 		head = filterStr(head);
 		body = filterStr(body);
+		// 줄 띄움, 띄어쓰기
 		body.replace("\r\n", "<br/>");
+
 		board.setBdTitle(head);
 		board.setBdContent(body);
 		List<ReplyVO> results = replyService.GetReply(page);
@@ -128,6 +132,7 @@ public class MainBoardController {
 
 	}
 
+	// 수정용, 해당 게시글 내용 요청.
 	@GetMapping("/edit/update")
 	public String GetUpdate(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
@@ -136,7 +141,7 @@ public class MainBoardController {
 		if (info == null) {
 			return "member/loginform";
 		}
-		System.out.println(info.getName());
+
 		Board board = boardDAO.getselectpage(page);
 		if (!info.getName().equals(board.getUserID())) {
 			return "edit/errorpage";
@@ -145,7 +150,8 @@ public class MainBoardController {
 		return "edit/update";
 
 	}
-
+	
+	//게시판 수정 요청, 스프링 인풋 폼으로 받아옴. 
 	@PostMapping("/edit/updateboard")
 	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand board,
 			@RequestParam(value = "bdID", required = false) int bdID, HttpSession session) {
@@ -182,7 +188,6 @@ public class MainBoardController {
 		}
 
 		boardDelupdateService.DeleteCommit(bdID);
-
 		return "redirect:/edit/main";
 
 	}

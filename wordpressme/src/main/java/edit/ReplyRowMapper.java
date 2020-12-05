@@ -16,8 +16,6 @@ public class ReplyRowMapper implements RowMapper<ReplyVO>{
 				rs.getString("writer"),
 				rs.getTimestamp("bdcDate").toLocalDateTime() 
 				);
-		
-		
 		return rv;
 	}
 
