@@ -7,7 +7,7 @@
 <title>삭제 페이지</title>
 </head>
 <body>
-삭제 페이지
+    삭제가 완료되었습니다.
 
 
 </body>
