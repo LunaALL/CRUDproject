@@ -73,6 +73,7 @@ pre {
 
 		<ol>
 			<c:forEach var="Replylist" items="${replylist}">
+				<br />
 				<li>
 					<p class="form-group" maxlength="30">
 						작성자: ${Replylist.writer} <br />
@@ -84,16 +85,15 @@ pre {
 				</li>
 			</c:forEach>
 		</ol>
-		<form action="/wordpressme/replyedit?bdID=${board.bdID}"
-			method="post">
+		<form action="/wordpressme/replyedit?bdID=${board.bdID}" method="post">
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="댓글 입력"
-					name="content" maxlength="30">
+				<div class="col-sm-12">
+					<input type="text" id="content" name="content" class="form-control" placeholder="댓글 작성" />
+					<input type="submit" class="btn btn-primary" value="작성">
+				</div>
+				<input type="submit" class="btn btn-primary" value="작성">
 			</div>
 
-			<div class="form-group">
-				<input type="submit" class="btn btn-primary form-control" value="작성">
-			</div>
 		</form>
 
 
