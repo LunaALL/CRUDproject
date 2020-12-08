@@ -91,7 +91,6 @@ pre {
 					<input type="text" id="content" name="content" class="form-control" placeholder="댓글 작성" />
 					<input type="submit" class="btn btn-primary" value="작성">
 				</div>
-				<input type="submit" class="btn btn-primary" value="작성">
 			</div>
 
 		</form>
