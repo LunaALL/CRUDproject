@@ -13,12 +13,15 @@
 </head>
 <body>
 	<div class="container">
-	<p> <span class=".text-primary">멤버 수 </span><span class="badge badge-primary">${allmemcount}</span>
-    <span class=".text-primary">게시글 수  </span><span class="badge badge-primary">${allpage}</span></p>
-	
+		<p>
+			<span class=".text-primary">멤버 수 </span><span
+				class="badge badge-primary">${allmemcount}</span> <span
+				class=".text-primary">게시글 수 </span><span class="badge badge-primary">${allpage}</span>
+		</p>
+
 	</div>
-        
- 
+
+
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped"
@@ -46,9 +49,9 @@
 			</table>
 
 			<a href="/wordpressme/write" class="btn btn_primary pull-right">글쓰기</a>
-			
+
 		</div>
-		
+
 	</div>
 
 	<div class="but" style="text-align: center;">
@@ -70,13 +73,15 @@
 			</c:if>
 		</ul>
 	</div>
-	
-	
-	
-	
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
 

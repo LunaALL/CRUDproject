@@ -37,13 +37,10 @@ pre {
 						<td style="width: 20%;">글 제목</td>
 						<td colspan="2">${board.bdTitle}</td>
 					</tr>
-
 					<tr>
 						<td>닉네임</td>
 						<td colspan="2">${board.userID}</td>
 					</tr>
-
-
 					<tr>
 						<td>작성일</td>
 						<td colspan="2"><tf:time value="${board.bdDate}"
@@ -67,10 +64,7 @@ pre {
 
 		</div>
 	</div>
-
-
 	<div class="container">
-
 		<ol>
 			<c:forEach var="Replylist" items="${replylist}">
 				<br />
@@ -85,11 +79,13 @@ pre {
 				</li>
 			</c:forEach>
 		</ol>
+
 		<form action="/wordpressme/replyedit?bdID=${board.bdID}" method="post">
 			<div class="form-group">
 				<div class="col-sm-12">
-					<input type="text" id="content" name="content" class="form-control" placeholder="댓글 작성" />
-					<input type="submit" class="btn btn-primary" value="작성">
+					<input type="text" id="content" name="content" class="form-control"
+						placeholder="댓글 작성" /> <input type="submit"
+						class="btn btn-primary" value="작성">
 				</div>
 			</div>
 

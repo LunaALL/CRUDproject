@@ -28,8 +28,8 @@
 					<tbody>
 						<tr>
 							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="bdTitle" maxlength="50">
-							<form:errors path="bdTitle" /></td>
+								placeholder="글 제목" name="bdTitle" maxlength="50"> <form:errors
+									path="bdTitle" /></td>
 						</tr>
 						<tr>
 							<td><textarea type="text" class="form-control"
