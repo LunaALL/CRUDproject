@@ -95,7 +95,7 @@ public class ControllerConfig {
 		del.setDeleteMemService(deleteMemService);
 		return del;
 	}
-	
+
 	@Bean
 	public ReplyController replyController() {
 		ReplyController rel = new ReplyController();

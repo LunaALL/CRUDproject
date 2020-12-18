@@ -21,7 +21,6 @@ import member.MemberAdminService;
 import member.MemberDAO;
 import member.MemberRegiService;
 
-
 @Configuration
 @EnableTransactionManagement
 public class MemberConfig {
@@ -30,7 +29,7 @@ public class MemberConfig {
 	public DataSource dataSource() {
 		DataSource ds = new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		//서버 타임존 잘 맞춰서 url 적어넣기 
+		// 서버 타임존 잘 맞춰서 url 적어넣기
 		ds.setUrl("jdbc:mysql://localhost:3306/webproject?serverTimezone=Asia/Seoul&characterEncoding=utf8");
 		ds.setUsername("webtask");
 		ds.setPassword("blackcow84012");
@@ -41,73 +40,76 @@ public class MemberConfig {
 		ds.setTimeBetweenEvictionRunsMillis(10 * 1000);
 		return ds;
 	}
-	
+
 	@Bean
 	public MemberDAO memberDAO() {
 		return new MemberDAO(dataSource());
 	}
+
 	@Bean
 	public BoardDAO boardDAO() {
 		return new BoardDAO(dataSource());
 	}
+
 	@Bean
 	public ReplyDAO replyDAO() {
 		return new ReplyDAO(dataSource());
 	}
+
 	@Bean
 	public MemberAdminService MemberAdminService() {
 		return new MemberAdminService(memberDAO());
 	}
-	
+
 	@Bean
 	public MemberRegiService memberRegiService() {
 		return new MemberRegiService(memberDAO());
 	}
+
 	@Bean
 	public BoardWriteService BoardWriteService() {
 		return new BoardWriteService(boardDAO());
 	}
+
 	@Bean
 	public BoardDelupdateService BoardDelupdateService() {
 		return new BoardDelupdateService(boardDAO());
 	}
-	
+
 	@Bean
 	public AuthService authService() {
 		AuthService authService = new AuthService();
 		authService.setMemberDAO(memberDAO());
 		return authService;
 	}
-	
+
 	@Bean
 	public ChangePasswordService changePasswordService() {
-		ChangePasswordService ct= new ChangePasswordService();
+		ChangePasswordService ct = new ChangePasswordService();
 		return ct;
-		
+
 	}
-	
+
 	@Bean
 	public DeleteMemService DeleteMemService() {
 		DeleteMemService ds = new DeleteMemService();
 		ds.setMemberAO(memberDAO());
 		return ds;
 	}
-	
+
 	@Bean
 	public ReplyService replyService() {
 		ReplyService rp = new ReplyService();
 		rp.setReplyDAO(replyDAO());
 		return rp;
 	}
-	
+
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		DataSourceTransactionManager tm = new DataSourceTransactionManager();
 		tm.setDataSource(dataSource());
 		return tm;
-		
-	}
-	
 
-	
+	}
+
 }
