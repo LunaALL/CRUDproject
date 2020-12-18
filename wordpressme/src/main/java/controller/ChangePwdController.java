@@ -20,7 +20,6 @@ import validator.ChangePwdCommandValidator;
  * 
  */
 
-
 @Controller
 @RequestMapping("/member/change")
 public class ChangePwdController {
@@ -38,7 +37,7 @@ public class ChangePwdController {
 
 	@PostMapping
 	public String submit(@ModelAttribute("pwdcommand") ChangePwdCommand pwd, Errors errors, HttpSession session) {
-		//검증 절차(비밀번호 확인) 걸치고, 서비스 클래스 이용해서 비밀번호 변경 
+		// 검증 절차(비밀번호 확인) 걸치고, 서비스 클래스 이용해서 비밀번호 변경
 		new ChangePwdCommandValidator().validate(pwd, errors);
 		if (errors.hasErrors()) {
 			return "member/changepwdform";

@@ -45,8 +45,8 @@ public class LoginController {
 		}
 		try {
 			AuthInfo authinfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
-			
-			//이메일 기억하기 쿠키 저장. 
+
+			// 이메일 기억하기 쿠키 저장.
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getEmail());
 			rememberCookie.setPath("/");
 			if (loginCommand.isRememberEmail()) {
@@ -55,7 +55,7 @@ public class LoginController {
 				rememberCookie.setMaxAge(0);
 			}
 			response.addCookie(rememberCookie);
-			//어드민ID 확인. 
+			// 어드민ID 확인.
 			if (authinfo.getAdmin() == 1) {
 				httpSession.setAttribute("Admin", authinfo);
 			}
