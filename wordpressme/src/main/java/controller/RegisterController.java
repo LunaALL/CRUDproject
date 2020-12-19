@@ -22,11 +22,13 @@ public class RegisterController {
 		this.memberRegiService = memberRegiService;
 	}
 
+	// 회원가입 1단계
 	@GetMapping("register/registep1")
 	public String step1() {
 		return "register/registep1";
 	}
 
+//회원가입 2단계
 	@PostMapping("register/registep2")
 	public String step2(@RequestParam(value = "agree", defaultValue = "false") Boolean Val) {
 		if (!Val) {
@@ -36,11 +38,13 @@ public class RegisterController {
 
 	}
 
+//2단계를 URL로 접근했을시 처리 
 	@GetMapping("register/registep2")
 	public String returnningstep2() {
 		return "redirect:/register/registep1";
 	}
 
+//회원가입 3단계
 	@PostMapping("register/registep3")
 	public String step3(@ModelAttribute("memberRegiService") RegisterReq req, Errors errors) {
 		new RegisterVaildator().validate(req, errors);

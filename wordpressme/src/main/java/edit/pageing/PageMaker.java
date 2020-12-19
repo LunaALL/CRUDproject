@@ -6,6 +6,7 @@ public class PageMaker {
 	private int totalCount; // 총 게시글 수
 	private int startPage;
 	private int endPage; // 화면에 보일 마지막(끝) 페이지 번호, 페이지 끝 번호
+	
 	private boolean prev;
 	private boolean next;
 	private int displayPageNum = 5; // 화면 하단에 보이는 각 페이지 번호 리미트.

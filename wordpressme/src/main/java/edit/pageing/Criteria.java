@@ -1,5 +1,6 @@
 package edit.pageing;
 
+//
 public class Criteria {
 
 	private int page; // 현재 페이지 번호

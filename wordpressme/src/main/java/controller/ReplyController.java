@@ -18,39 +18,34 @@ import login.AuthInfo;
 
 @Controller
 public class ReplyController {
-	
-	
+
 	ReplyService replyService;
-	
+
 	public void setReplyService(ReplyService replyService) {
 		this.replyService = replyService;
 	}
 
-
-
 	@PostMapping("/replyedit")
-	public ModelAndView replyWrite( HttpServletRequest request,
-			@RequestParam(value = "bdID", required = true )int bdID, HttpSession session
-			) {
-		
-		//생성자없이 직접넣음. bdId는 주소 파라미터, content는 form, 시간
+	public ModelAndView replyWrite(HttpServletRequest request, @RequestParam(value = "bdID", required = true) int bdID,
+			HttpSession session) {
+
+		// 생성자없이 직접넣음. bdId는 주소 파라미터, content는 form, 시간
 		ReplyVO vo = new ReplyVO();
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		ModelAndView mv = new ModelAndView();
-		
+
 		if (info == null) {
 			mv.setViewName("member/loginform");
 			return mv;
 		}
-		
+
 		vo.setBoardnum(bdID);
 		vo.setContent(request.getParameter("content"));
 		vo.setBdcDate(LocalDateTime.now());
-		//서비스 클래스에서 커멘트넘버를 DAO 조회해서 인풋. 
+		// 서비스 클래스에서 커멘트넘버를 DAO 조회해서 인풋.
 		replyService.inputComment(vo);
-		mv.setViewName("redirect:/edit/editview?bdID="+bdID);
-		
-		
+		mv.setViewName("redirect:/edit/editview?bdID=" + bdID);
+
 		return mv;
 	}
 }

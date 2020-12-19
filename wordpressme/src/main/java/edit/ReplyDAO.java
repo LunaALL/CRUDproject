@@ -10,7 +10,7 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-
+//댓글 관련 DAO 클래스
 public class ReplyDAO {
 
 	private JdbcTemplate jdbcTemplate;

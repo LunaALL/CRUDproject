@@ -60,7 +60,7 @@ public class MainBoardController {
 		Criteria cri = new Criteria();
 		cri.setPage(page);
 		PageMaker pagemaker = new PageMaker();
-		//전체 게시글 요청. 
+		// 전체 게시글 요청.
 		List<Board> bd = boardDAO.getDivPage(cri);
 
 		for (Board board : bd) {
@@ -132,7 +132,7 @@ public class MainBoardController {
 
 	}
 
-	// 수정용, 해당 게시글 내용 요청.
+	// 해당 게시글 내용 요청 하여 수정하기 전 내용을 요청. 
 	@GetMapping("/edit/update")
 	public String GetUpdate(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
@@ -150,14 +150,15 @@ public class MainBoardController {
 		return "edit/update";
 
 	}
-	
-	//게시판 수정 요청, 스프링 인풋 폼으로 받아옴. 
+
+	// 게시판 수정 요청 포스트 매핑. BoardDelupdateCommand 클래스로 데이터베이스 커밋.
 	@PostMapping("/edit/updateboard")
 	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand board,
 			@RequestParam(value = "bdID", required = false) int bdID, HttpSession session) {
 		board.setBdID(bdID);
 		String head = board.getBdTitle();
 		String body = board.getBdContent();
+		//XSS 공격 방지
 		head = filterStr(head);
 		body = filterStr(body);
 		board.setBdTitle(head);
@@ -168,6 +169,7 @@ public class MainBoardController {
 
 	}
 
+	//게시글 삭제용 메서드
 	@GetMapping("/edit/delete")
 	public String PostDelete(@RequestParam(value = "bdID", required = false) int bdID,
 			@RequestParam(value = "name", required = false) String name, HttpSession session) {
