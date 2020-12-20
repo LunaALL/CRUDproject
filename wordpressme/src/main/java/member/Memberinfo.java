@@ -10,9 +10,9 @@ public class Memberinfo {
 	private String password;
 	private String name;
 	private LocalDateTime registerDataTime;
-	
+
 	public Memberinfo(String email, String password, String name, LocalDateTime registerDataTime) {
-		
+
 		this.email = email;
 		this.password = password;
 		this.name = name;
@@ -50,7 +50,7 @@ public class Memberinfo {
 	public void setRegisterDataTime(LocalDateTime registerDataTime) {
 		this.registerDataTime = registerDataTime;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -58,20 +58,18 @@ public class Memberinfo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public boolean matchmemberpassword(String newpassword) {
 		return this.password.equals(newpassword);
-		
+
 	}
-	
-	public void changepassword(String oldp,String newp) {
-		if(!(this.password.equals(oldp)) ) {
+
+	public void changepassword(String oldp, String newp) {
+		if (!(this.password.equals(oldp))) {
 			throw new WrongPasswordException();
 		}
-		this.password=newp;
-		
+		this.password = newp;
+
 	}
-	
-	
 
 }

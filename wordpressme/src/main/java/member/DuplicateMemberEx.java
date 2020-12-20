@@ -1,7 +1,7 @@
 package member;
 
 public class DuplicateMemberEx extends RuntimeException {
-	
+
 	/**
 	 * 
 	 */
