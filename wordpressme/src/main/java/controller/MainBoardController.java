@@ -125,6 +125,7 @@ public class MainBoardController {
 
 		board.setBdTitle(head);
 		board.setBdContent(body);
+		//페이지 번호를 이용하여, 댓글목록 생성 
 		List<ReplyVO> results = replyService.GetReply(page);
 		mv.addObject("board", board);
 		mv.addObject("replylist", results);
