@@ -65,7 +65,7 @@ public class ReplyDAO {
 
 	// 해당 댓글을 삭제하는 메서드 인자는 댓글 번호와 종속된 게시글 번호
 	public int delReply(int commentnum, int bdId, String writer) {
-		jdbcTemplate.update("delete from bdcomments where commentnum=? AND boardnum=? AND writer=?;", commentnum, bdId,
+		jdbcTemplate.update("delete from bdcomments where commentnum=? AND boardnum=? AND writer=?", commentnum, bdId,
 				writer);
 		return 1;
 	}

@@ -54,8 +54,7 @@ public class ReplyController {
 	}
 
 	@PostMapping("/replydel")
-	public ModelAndView replyDel(HttpServletRequest request,
-			@RequestParam(value = "bdID", required = true) int bdID,
+	public ModelAndView replyDel(HttpServletRequest request, @RequestParam(value = "bdID", required = true) int bdID,
 			@RequestParam(value = "commentnum", required = true) int commentnum,
 			@RequestParam(value = "writer", required = true) String writer, HttpSession session) throws Exception {
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
@@ -64,9 +63,9 @@ public class ReplyController {
 			mv.setViewName("member/loginform");
 			return mv;
 		}
-		
-		int result=replyService.delComment(commentnum, bdID, writer);
-		
+
+		int result = replyService.delComment(commentnum, bdID, writer);
+
 		mv.setViewName("redirect:/edit/editview?bdID=" + bdID);
 
 		return mv;
