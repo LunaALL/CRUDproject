@@ -73,8 +73,16 @@ pre {
 						작성자: ${Replylist.writer} <br />
 						<tf:time value="${Replylist.bdcDate}"
 							pattern="yyyy년 MM월 dd일  HH:mm" />
+						${Replylist.commentnum} 번
 					</p>
 					<p class="form-group">${Replylist.content}</p>
+					<form
+						action="/wordpressme/replydel?bdID=${board.bdID}&commentnum=${Replylist.commentnum}&writer=${Replylist.writer}"
+						method="post">
+						<input type="submit" class="btn btn-primary" value="삭제">
+					</form>
+
+
 
 				</li>
 			</c:forEach>
@@ -88,7 +96,6 @@ pre {
 						class="btn btn-primary" value="작성">
 				</div>
 			</div>
-
 		</form>
 
 
