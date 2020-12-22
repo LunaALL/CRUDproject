@@ -84,7 +84,6 @@
 					<ul class="dropdown-menu">
 						<li><a href="/wordpressme/logout">로그아웃</a></li>
 						<li><a href="/wordpressme/member/change">비밀번호변경</a></li>
-						<li><a href="/wordpressme/member/nickch">닉네임변경</a></li>
 						<li><a href="/wordpressme/deletemem">회원 탈퇴</a></li>
 					</ul></li>
 			</ul>

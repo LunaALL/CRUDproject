@@ -125,7 +125,7 @@ public class MainBoardController {
 
 		board.setBdTitle(head);
 		board.setBdContent(body);
-		//페이지 번호를 이용하여, 댓글목록 생성 
+		// 페이지 번호를 이용하여, 댓글목록 생성
 		List<ReplyVO> results = replyService.GetReply(page);
 		mv.addObject("board", board);
 		mv.addObject("replylist", results);
@@ -133,7 +133,7 @@ public class MainBoardController {
 
 	}
 
-	// 해당 게시글 내용 요청 하여 수정하기 전 내용을 요청. 
+	// 해당 게시글 내용 요청 하여 수정하기 전 내용을 요청.
 	@GetMapping("/edit/update")
 	public String GetUpdate(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
@@ -159,7 +159,7 @@ public class MainBoardController {
 		board.setBdID(bdID);
 		String head = board.getBdTitle();
 		String body = board.getBdContent();
-		//XSS 공격 방지
+		// XSS 공격 방지
 		head = filterStr(head);
 		body = filterStr(body);
 		board.setBdTitle(head);
@@ -170,7 +170,7 @@ public class MainBoardController {
 
 	}
 
-	//게시글 삭제용 메서드
+	// 게시글 삭제용 메서드
 	@GetMapping("/edit/delete")
 	public String PostDelete(@RequestParam(value = "bdID", required = false) int bdID,
 			@RequestParam(value = "name", required = false) String name, HttpSession session) {
