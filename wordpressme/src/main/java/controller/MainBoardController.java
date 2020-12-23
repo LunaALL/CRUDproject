@@ -56,7 +56,7 @@ public class MainBoardController {
 	public ModelAndView BoardMain(@RequestParam(value = "page", required = true, defaultValue = "1") int page) {
 
 		ModelAndView mav = new ModelAndView("/edit/boardmain");
-		// 게시판 페이징 부분.
+		// 게시판 페이징
 		Criteria cri = new Criteria();
 		cri.setPage(page);
 		PageMaker pagemaker = new PageMaker();
@@ -152,7 +152,7 @@ public class MainBoardController {
 
 	}
 
-	// 게시판 수정 요청 포스트 매핑. BoardDelupdateCommand 클래스로 데이터베이스 커밋.
+	// 게시판 수정 요청 포스트 매핑. BoardDelupdateCommand VO클래스
 	@PostMapping("/edit/updateboard")
 	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand board,
 			@RequestParam(value = "bdID", required = false) int bdID, HttpSession session) {

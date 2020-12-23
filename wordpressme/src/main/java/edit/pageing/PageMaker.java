@@ -23,7 +23,7 @@ public class PageMaker {
 		return totalCount;
 	}
 
-	// 페이징 관련 버튼(1,2,3,4,5) 계산을 하는 메서드
+	// 페이징 관련 버튼(1,2,3,4,5) 계산을 하는 메서드, 인자로 총 게시글 갯수를 받음.
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		calcData();
@@ -32,17 +32,17 @@ public class PageMaker {
 	private void calcData() {
 		// getPage 현재 페이지 번호를 반환
 		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
-		// 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 페이지 번호의 갯수) * 화면에 보여질 페이지 번호의 갯수
+		// 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 최대 페이지 번호의 갯수 5) * 화면에 보여질 페이지 번호의 갯수
 		startPage = (endPage - displayPageNum) + 1;
 
 		if (startPage <= 0)
 			startPage = 1;
-		// getPerPageNum 한 페이지당 보여줄 게시글의 갯수
-
+		// getPerPageNum 한 페이지당 보여줄 게시글의 갯수 기본 10개
+		// tempEndPage 동적 한 페이지당 보여줄 게시글의 갯수 ( 총 12개 , 1페이지 10개, 2페이지 2개)
 		int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
-		// tempEndPage 는 총 게시글 숫자를 한 페이지당 보여줄 게시글의 갯수(10)를 나눈것.
 
 		if (endPage > tempEndPage) {
+			//게시글 최소 표시숫자보다 적을경우 
 			endPage = tempEndPage;
 		}
 		// 이전 버튼 생성 여부 .
