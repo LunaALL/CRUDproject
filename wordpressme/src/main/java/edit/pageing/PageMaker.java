@@ -31,8 +31,9 @@ public class PageMaker {
 
 	private void calcData() {
 		// getPage 현재 페이지 번호를 반환
-		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
 		// 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 최대 페이지 번호의 갯수 5) * 화면에 보여질 페이지 번호의 갯수
+		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
+
 		startPage = (endPage - displayPageNum) + 1;
 
 		if (startPage <= 0)
@@ -42,7 +43,7 @@ public class PageMaker {
 		int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
 
 		if (endPage > tempEndPage) {
-			//게시글 최소 표시숫자보다 적을경우 
+			// 게시글 최소 표시숫자보다 적을경우
 			endPage = tempEndPage;
 		}
 		// 이전 버튼 생성 여부 .
