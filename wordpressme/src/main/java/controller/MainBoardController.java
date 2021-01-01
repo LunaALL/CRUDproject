@@ -60,7 +60,7 @@ public class MainBoardController {
 		Criteria cri = new Criteria();
 		cri.setPage(page);
 		PageMaker pagemaker = new PageMaker();
-		// 전체 게시글 요청.
+		// 페이지당 10개로 나눈 게시글을 받아옴.
 		List<Board> bd = boardDAO.getDivPage(cri);
 
 		for (Board board : bd) {

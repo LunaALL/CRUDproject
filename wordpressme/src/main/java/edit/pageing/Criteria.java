@@ -23,7 +23,7 @@ public class Criteria {
 
 	public void setPage(int page) {
 		if (page <= 0) {
-			//기본 페이지 설정 
+			// 기본 페이지 설정
 			this.page = 1;
 		} else {
 			this.page = page;
