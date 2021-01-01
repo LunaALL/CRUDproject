@@ -43,7 +43,6 @@
 			id="#bs-example-navbar-collapse-1">
 
 			<ul class="nav navbar-nav">
-				<li><a href="/wordpressme/main">코드데이터 메인</a></li>
 				<li><a href="/wordpressme/edit/main">코드 게시판</a></li>
 				<%
 					if (session.getAttribute("Admin") != null) {
