@@ -25,7 +25,7 @@ public class ReplyService {
 		vo.setCommentnum(commentnum);
 		replyDAO.InputComment(vo);
 	}
-
+	
 	// 댓글 삭제
 	public int delComment(int commentnum, int bdId, String writer) {
 		int result = replyDAO.delReply(commentnum, bdId, writer);

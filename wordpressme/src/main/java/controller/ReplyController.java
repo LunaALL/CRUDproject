@@ -63,6 +63,11 @@ public class ReplyController {
 			mv.setViewName("member/loginform");
 			return mv;
 		}
+		
+		if(!writer.equals(info.getName())) {
+			mv.setViewName("edit/errorpage");
+			return mv;
+		}
 
 		int result = replyService.delComment(commentnum, bdID, writer);
 

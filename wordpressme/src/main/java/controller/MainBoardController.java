@@ -51,7 +51,7 @@ public class MainBoardController {
 		this.boardDelupdateService = boardDelupdateService;
 	}
 
-	// @GetMapping("/board/boardList")
+	
 	@GetMapping("/edit/main")
 	public ModelAndView BoardMain(@RequestParam(value = "page", required = true, defaultValue = "1") int page) {
 
@@ -102,11 +102,12 @@ public class MainBoardController {
 	 * 
 	 * return "edit/noticeboardmain"; }
 	 */
-
+	
+	// 게시글 상세보기 처리 메서드.
 	@GetMapping("/edit/editview")
 	public ModelAndView clickBoard(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
-		// 게시글 상세보기 처리 메서드.
+		
 		AuthInfo info = (AuthInfo) session.getAttribute("authinfo");
 		if (info == null) {
 			// 로그인 없이 들어오지 말자.
@@ -133,7 +134,7 @@ public class MainBoardController {
 
 	}
 
-	// 해당 게시글 내용 요청 하여 수정하기 전 내용을 요청.
+	// 해당 게시글 내용 요청, 수정하기 전 내용을 요청.
 	@GetMapping("/edit/update")
 	public String GetUpdate(@RequestParam(value = "bdID", required = false) int page, Model model,
 			HttpSession session) {
@@ -152,7 +153,7 @@ public class MainBoardController {
 
 	}
 
-	// 게시판 수정 요청 포스트 매핑. BoardDelupdateCommand VO클래스
+	// 게시판 수정 요청 포스트 매핑. BoardDelupdateCommand 
 	@PostMapping("/edit/updateboard")
 	public String PostUpdate(@ModelAttribute("updatecommand") BoardDelupdateCommand board,
 			@RequestParam(value = "bdID", required = false) int bdID, HttpSession session) {
