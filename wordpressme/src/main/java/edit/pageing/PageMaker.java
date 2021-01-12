@@ -7,8 +7,8 @@ public class PageMaker {
 	private int startPage;
 	private int endPage; // 화면에 보일 마지막(끝) 페이지 번호, 페이지 끝 번호
 
-	private boolean prev;
-	private boolean next;
+	private boolean prev; //이전 버튼
+	private boolean next; //페이지 다음 버튼
 	private int displayPageNum = 5; // 화면 하단에 보이는 각 페이지 번호 리미트.
 
 	public Criteria getCri() {
@@ -31,7 +31,7 @@ public class PageMaker {
 
 	private void calcData() {
 		// getPage 현재 페이지 번호를 반환
-		// 끝 페이지 번호 = (현재 페이지 번호 / 화면에 보여질 최대 페이지 번호의 갯수 5) * 화면에 보여질 페이지 번호의 갯수
+		// 끝 페이지 번호 = (현재 페이지 번호 / 5 * 5
 		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
 
 		startPage = (endPage - displayPageNum) + 1;
